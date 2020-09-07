@@ -197,7 +197,7 @@
                     </div>
                     <div class="clearfix d-md-inline-block d-block">
                         <div class="user-profile m-0">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Sim-Hrms <i
                                     class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
@@ -335,9 +335,16 @@
                         <h4>사원 등록</h4>
                     </div>
                     <div class="row">
-                        <div class="login-form-body col-md-6 mt-5 mb-3">
+                        <div class="login-form-body col-md-3 mt-5 mb-3">
+                            <img class="card-img-top img-fluid" src="/images/card/card-img1.jpg" alt="image">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="login-form-body col-md-4  mt-md-5 mb-3">
                             <div class="form-gp">
-                                <label for="number">사원 번호</label>
+                                <label for="number">사원번호</label>
                                 <input type="text" id="number" name="number">
                                 <div class="text-danger"></div>
                             </div>
@@ -352,38 +359,70 @@
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
-                                <label for="department">부서</label>
-                                <input type="dropdown" id="department">
-                                <div class="text-danger"></div>
-                            </div>
-                            <div class="form-gp">
-                                <label for="position">직책</label>
-                                <input type="dropdown" id="position">
-                                <div class="text-danger"></div>
-                            </div>
-                            <div class="form-gp">
-                                <label for="status">재직 구분</label>
-                                <input type="dropdown" id="status">
-                                <div class="text-danger"></div>
-                            </div>
-                        </div>
-                        <div class="login-form-body col-md-6 mt-md-5 mb-3">
-                            <div class="form-gp">
                                 <label for="email">Email</label>
                                 <input type="email" id="email">
                                 <div class="text-danger"></div>
                             </div>
-                            <div class="form-gp">
-                                <label for="exampleInputEmail1">Email</label>
-                                <span><input type="email" id="exampleInputEmail1"></span>
-                                <div class="text-danger"></div>
+                            <div style="display: inline">
+                                <label>성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" checked id="customRadio4" name="customRadio2"
+                                           class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio4">남</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadio5" name="customRadio2"
+                                           class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio5">여</label>
+                                </div>
                             </div>
-                        </div>
 
                         </div>
-                        <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">가입하기<i class="ti-arrow-right"></i></button>
+                        <div class="login-form-body col-md-4 mt-md-5 mb-3">
+                            <div class="form-gp">
+                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    부서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </button>
+                                <div class="dropdown-menu" id="department" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                                <div class="text-danger"></div>
+                            </div>
+                            <div class="form-gp">
+                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    직책&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </button>
+                                <div class="dropdown-menu" id="position" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                                <div class="text-danger"></div>
+                            </div>
+                            <div class="form-gp">
+                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    재직 구분
+                                </button>
+                                <div class="dropdown-menu" id="status" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                                <div class="text-danger"></div>
+                            </div>
+                            <div class="form-group" style="float: left">
+                                <label for="example-date-input" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자
+                                    &nbsp;&nbsp;<input class="form-control" type="date" value="2020-09-08" id="example-date-input"></label>
+                            </div>
+
                         </div>
+
+                    </div>
+                    <div class="submit-btn-area">
+                        <button id="form_submit" type="submit">가입하기<i class="ti-arrow-right"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
