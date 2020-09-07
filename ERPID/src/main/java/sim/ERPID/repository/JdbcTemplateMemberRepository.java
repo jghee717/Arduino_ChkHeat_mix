@@ -36,20 +36,30 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
         List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(), id);
         return result.stream().findAny();
     }
+
     @Override
     public List<Member> findAll() {
         return jdbcTemplate.query("select * from member", memberRowMapper());
     }
+
     @Override
     public Optional<Member> findByName(String name) {
         List<Member> result = jdbcTemplate.query("select * from member where name = ?", memberRowMapper(), name);
         return result.stream().findAny();
     }
+
+    @Override
+    public Optional<Member> findByNumber(Integer number) {
+        List<Member> result = jdbcTemplate.query("select * from member where number = ?", memberRowMapper(), number);
+        return result.stream().findAny();
+    }
+
     private RowMapper<Member> memberRowMapper() {
         return (rs, rowNum) -> {
             Member member = new Member();
             member.setId(rs.getLong("id"));
             member.setName(rs.getString("name"));
+            member.setNumber(rs.getInt("Number"));
             return member;
         };
     }

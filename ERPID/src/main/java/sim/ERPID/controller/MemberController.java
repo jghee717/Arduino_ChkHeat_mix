@@ -20,12 +20,13 @@ public class MemberController {
     }
     @GetMapping(value = "/members/new")
     public String createForm() {
-        return "members/createMemberForm";
+        return "members/signup";
     }
     @PostMapping(value = "/members/new")
     public String create(MemberForm form) {
         Member member = new Member();
         member.setName(form.getName());
+        member.setNumber(form.getNumber());
         memberService.join(member);
         return "redirect:/";
     }

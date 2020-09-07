@@ -29,4 +29,10 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+
+    @Override
+    public Optional<Member> findByNumber(Integer number) {
+        Member member = em.find(Member.class, number);
+        return Optional.ofNullable(member);
+    }
 }

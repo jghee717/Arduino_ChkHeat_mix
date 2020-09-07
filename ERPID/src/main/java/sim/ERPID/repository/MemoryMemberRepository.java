@@ -30,6 +30,13 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
+    public Optional<Member> findByNumber(Integer number) {
+        return store.values().stream()
+                .filter(member -> member.getNumber().equals(number))
+                .findAny(); // map의 loop 다 돌면서 하나라도 찾으면 반환. 그래도 없으면 옵셔널에 널포함해서 반환
+    }
+
+    @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
     }
