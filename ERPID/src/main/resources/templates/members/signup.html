@@ -345,26 +345,33 @@
                         <div class="login-form-body col-md-4  mt-md-5 mb-3">
                             <div class="form-gp">
                                 <label for="number">사원번호</label>
-                                <input type="text" id="number" name="number">
+                                <input type="text" id="number" name="number"style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="name">성명</label>
-                                <input type="text" id="name" name="name">
+                                <input type="text" id="name" name="name"style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="password">비밀번호</label>
-                                <input type="password" id="password">
+                                <input type="password" id="password"style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="email">Email</label>
-                                <input type="email" id="email">
+                                <input type="email" id="email"style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
                             <div style="display: inline">
-                                <label>성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="form-gp">
+                                <label for="resinum">주민등록번호</label>
+                                <input type="text" id="resinum" name="resinum1" size="10" maxlength="6" style="width: 35%">
+                                -<input type="password" name="resinum2" size="10" maxlength="7" style="width: 35%">
+                            </div>
+                            </div>
+                            <div style="display: inline">
+                                <label class="form-gp">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" checked id="customRadio4" name="customRadio2"
                                            class="custom-control-input">
@@ -375,6 +382,11 @@
                                            class="custom-control-input">
                                     <label class="custom-control-label" for="customRadio5">여</label>
                                 </div>
+                                <div class="text-danger"></div>
+                            </div>
+                            <div class="form-gp" >
+                                <label for="address">주소</label>
+                                <input type="text" id="address" style="bottom: 30px">
                             </div>
 
                         </div>
@@ -410,13 +422,15 @@
                                     <a class="dropdown-item" href="#">Dropdown link</a>
                                     <a class="dropdown-item" href="#">Dropdown link</a>
                                 </div>
-                                <div class="text-danger"></div>
                             </div>
-                            <div class="form-group" style="float: left">
-                                <label for="example-date-input" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자
-                                    &nbsp;&nbsp;<input class="form-control" type="date" value="2020-09-08" id="example-date-input"></label>
+                            <div>
+                                <label for="join" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자</label>
+                                <input class="form-control" type="date" value="2020-09-08" id="join" style="width: 50%">
                             </div>
-
+                            <div style="bottom: 20px">
+                                <label for="resign" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴사일자</label>
+                                <input class="form-control" type="date" value="" id="resign" style="width: 50%">
+                            </div>
                         </div>
 
                     </div>
