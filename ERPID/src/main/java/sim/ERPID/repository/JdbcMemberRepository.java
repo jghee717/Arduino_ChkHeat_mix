@@ -54,7 +54,8 @@ public class JdbcMemberRepository implements MemberRepository {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
-                member.setNumber(rs.getInt("Number"));
+                member.setNumber(rs.getInt("number"));
+                member.setPw(rs.getString("pw"));
                 return Optional.of(member);
             } else {
                 return Optional.empty();
@@ -80,7 +81,8 @@ public class JdbcMemberRepository implements MemberRepository {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
-                member.setNumber(rs.getInt("Number"));
+                member.setNumber(rs.getInt("number"));
+                member.setPw(rs.getString("pw"));
                 members.add(member);
             }
             return members;
@@ -105,7 +107,8 @@ public class JdbcMemberRepository implements MemberRepository {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
-                member.setNumber(rs.getInt("Number"));
+                member.setNumber(rs.getInt("number"));
+                member.setPw(rs.getString("pw"));
                 return Optional.of(member);
             }
             return Optional.empty();
@@ -131,11 +134,39 @@ public class JdbcMemberRepository implements MemberRepository {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
-                member.setNumber(rs.getInt("Number"));
+                member.setNumber(rs.getInt("number"));
+                member.setPw(rs.getString("pw"));
                 return Optional.of(member);
             } else {
                 return Optional.empty();
             }
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        } finally {
+            close(conn, pstmt, rs);
+        }
+    }
+
+    @Override
+    public Optional<Member> findByPw(String pw) {
+        String sql = "select * from member where pw = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, pw);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                member.setNumber(rs.getInt("number"));
+                member.setPw(rs.getString("pw"));
+                return Optional.of(member);
+            }
+            return Optional.empty();
         } catch (Exception e) {
             throw new IllegalStateException(e);
         } finally {

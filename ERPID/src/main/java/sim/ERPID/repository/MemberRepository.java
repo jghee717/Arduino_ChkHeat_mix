@@ -10,5 +10,6 @@ public interface MemberRepository {
     Optional<Member> findById(Long id);  // Optional= null반환 대신 optional로 감싸서 반환?
     Optional<Member> findByName(String name);
     Optional<Member> findByNumber(Integer number);
+    Optional<Member> findByPw(String pw);
     List<Member> findAll();
 }

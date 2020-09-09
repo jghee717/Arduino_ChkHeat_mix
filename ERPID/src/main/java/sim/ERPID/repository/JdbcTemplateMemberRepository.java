@@ -54,12 +54,20 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
         return result.stream().findAny();
     }
 
+    @Override
+    public Optional<Member> findByPw(String pw) {
+        List<Member> result = jdbcTemplate.query("select * from member where pw = ?", memberRowMapper(), pw);
+        return result.stream().findAny();
+    }
+
     private RowMapper<Member> memberRowMapper() {
         return (rs, rowNum) -> {
             Member member = new Member();
             member.setId(rs.getLong("id"));
             member.setName(rs.getString("name"));
-            member.setNumber(rs.getInt("Number"));
+            member.setPw(rs.getString("pw"));
+            member.setNumber(rs.getInt("number"));
+
             return member;
         };
     }

@@ -12,6 +12,7 @@ public class Member {
     private Long id;
     private String name;
     private Integer number;
+    private String pw;
 
     public Long getId() {
         return id;
@@ -35,5 +36,14 @@ public class Member {
 
     public Object getNumber() {
         return number;
+    }
+
+
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 }

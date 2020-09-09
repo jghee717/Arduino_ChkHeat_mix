@@ -35,6 +35,11 @@ public class MemoryMemberRepository implements MemberRepository {
                 .filter(member -> member.getNumber().equals(number))
                 .findAny(); // map의 loop 다 돌면서 하나라도 찾으면 반환. 그래도 없으면 옵셔널에 널포함해서 반환
     }
+    public Optional<Member> findByPw(String pw) {
+        return store.values().stream()
+                .filter(member -> member.getPw().equals(pw))
+                .findAny(); // map의 loop 다 돌면서 하나라도 찾으면 반환. 그래도 없으면 옵셔널에 널포함해서 반환
+    }
 
     @Override
     public List<Member> findAll() {

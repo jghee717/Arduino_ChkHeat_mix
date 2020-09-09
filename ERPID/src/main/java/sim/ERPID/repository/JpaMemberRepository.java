@@ -29,10 +29,18 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+    public Optional<Member> findByPw(String pw) {
+        List<Member> result = em.createQuery("select m from Member m where m.pw = :pw", Member.class)
+                .setParameter("pw", pw)
+                .getResultList();
+        return result.stream().findAny();
+    }
 
     @Override
     public Optional<Member> findByNumber(Integer number) {
         Member member = em.find(Member.class, number);
         return Optional.ofNullable(member);
     }
+
+
 }
