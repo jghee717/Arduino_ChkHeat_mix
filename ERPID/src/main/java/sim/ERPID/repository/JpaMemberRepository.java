@@ -35,6 +35,28 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+    public Optional<Member> findByEmail(String email) {
+        List<Member> result = em.createQuery("select m from Member m where m.email = :email", Member.class)
+                .setParameter("email", email)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findBySex(String sex) {
+        List<Member> result = em.createQuery("select m from Member m where m.sex = :sex", Member.class)
+                .setParameter(sex, sex)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findByAddress(String address) {
+        List<Member> result = em.createQuery("select m from Member m where m.address = :address", Member.class)
+                .setParameter("address", address)
+                .getResultList();
+        return result.stream().findAny();
+    }
 
     @Override
     public Optional<Member> findByNumber(Integer number) {

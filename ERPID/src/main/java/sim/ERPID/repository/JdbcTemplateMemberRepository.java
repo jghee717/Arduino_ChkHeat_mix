@@ -60,6 +60,24 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
         return result.stream().findAny();
     }
 
+    @Override
+    public Optional<Member> findByEmail(String email) {
+        List<Member> result = jdbcTemplate.query("select * from member where email = ?", memberRowMapper(), email);
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findBySex(String sex) {
+        List<Member> result = jdbcTemplate.query("select * from member where sex = ?", memberRowMapper(), sex);
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findByAddress(String address) {
+        List<Member> result = jdbcTemplate.query("select * from member where address = ?", memberRowMapper(), address);
+        return result.stream().findAny();
+    }
+
     private RowMapper<Member> memberRowMapper() {
         return (rs, rowNum) -> {
             Member member = new Member();
@@ -67,6 +85,10 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
             member.setName(rs.getString("name"));
             member.setPw(rs.getString("pw"));
             member.setNumber(rs.getInt("number"));
+            member.setEmail(rs.getString("email"));
+            member.setSex(rs.getString("sex"));
+            member.setAddress(rs.getString("address"));
+
 
             return member;
         };

@@ -8,6 +8,10 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
     Optional<Member> findByName(String name);
     Optional<Member> findByPw(String pw);
     Optional<Member> findByNumber(Integer number);
+    Optional<Member> findByEmail(String email);
+    Optional<Member> findBySex(String sex);
+    Optional<Member> findByAddress(String address);
+
 
 }
 //스프링 데이터 JPA가 SpringDataJpaMemberRepository 를 스프링 빈으로 자동 등록해준다.

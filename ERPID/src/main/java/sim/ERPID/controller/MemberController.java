@@ -28,6 +28,9 @@ public class MemberController {
         member.setName(form.getName());
         member.setNumber(form.getNumber());
         member.setPw(form.getPw());
+        member.setEmail(form.getEmail());
+        member.setSex(form.getSex());
+        member.setAddress(form.getAddress());
         memberService.join(member);
         return "redirect:/";
     }

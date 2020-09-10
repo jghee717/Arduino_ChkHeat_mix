@@ -83,6 +83,7 @@ public class JdbcMemberRepository implements MemberRepository {
                 member.setName(rs.getString("name"));
                 member.setNumber(rs.getInt("number"));
                 member.setPw(rs.getString("pw"));
+                member.setEmail(rs.getString("email"));
                 members.add(member);
             }
             return members;
@@ -164,6 +165,78 @@ public class JdbcMemberRepository implements MemberRepository {
                 member.setName(rs.getString("name"));
                 member.setNumber(rs.getInt("number"));
                 member.setPw(rs.getString("pw"));
+                return Optional.of(member);
+            }
+            return Optional.empty();
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        } finally {
+            close(conn, pstmt, rs);
+        }
+    }
+
+    @Override
+    public Optional<Member> findByEmail(String email) {
+        String sql = "select * from member where email = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                Member member = new Member();
+                member.setEmail(rs.getString("email"));
+                return Optional.of(member);
+            }
+            return Optional.empty();
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        } finally {
+            close(conn, pstmt, rs);
+        }
+    }
+
+    @Override
+    public Optional<Member> findBySex(String sex) {
+        String sql = "select * from member where sex = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, sex);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                Member member = new Member();
+                member.setSex(rs.getString("sex"));
+                return Optional.of(member);
+            }
+            return Optional.empty();
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        } finally {
+            close(conn, pstmt, rs);
+        }
+    }
+
+    @Override
+    public Optional<Member> findByAddress(String address) {
+        String sql = "select * from member where address = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, address);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                Member member = new Member();
+                member.setAddress(rs.getString("address"));
                 return Optional.of(member);
             }
             return Optional.empty();
