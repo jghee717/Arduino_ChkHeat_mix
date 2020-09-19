@@ -14,5 +14,6 @@ public interface MemberRepository {
     Optional<Member> findByEmail(String email);
     Optional<Member> findBySex(String sex);
     Optional<Member> findByAddress(String address);
+    Optional<Member> findByJumin(String jumin);
     List<Member> findAll();
 }

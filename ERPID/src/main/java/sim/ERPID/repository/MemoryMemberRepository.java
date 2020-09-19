@@ -49,6 +49,12 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
+    public Optional<Member> findByJumin(String jumin) {
+        return store.values().stream()
+                .filter(member -> member.getJumin().equals(jumin))
+                .findAny();
+    }
+    @Override
     public Optional<Member> findBySex(String sex) {
         return store.values().stream()
                 .filter(member -> member.getSex().equals(sex))

@@ -11,6 +11,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
     Optional<Member> findByEmail(String email);
     Optional<Member> findBySex(String sex);
     Optional<Member> findByAddress(String address);
+    Optional<Member> findByJumin(String jumin);
 
 
 }

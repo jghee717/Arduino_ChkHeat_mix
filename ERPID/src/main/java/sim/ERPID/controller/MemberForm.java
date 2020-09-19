@@ -11,6 +11,7 @@ public class MemberForm {
     private String email;
     private String sex;
     private String address;
+    private String jumin;
 
     public String getName() {
         return name;
@@ -57,5 +58,13 @@ public class MemberForm {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getJumin() {
+        return jumin;
+    }
+
+    public void setJumin(String jumin) {
+        this.jumin = jumin;
     }
 }

@@ -20,7 +20,7 @@ public class Member {
     private String email;
     private String sex;
     private String address;
-
+    private String jumin;
 
 
 
@@ -79,5 +79,13 @@ public class Member {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getJumin() {
+        return jumin;
+    }
+
+    public void setJumin(String jumin) {
+        this.jumin = jumin;
     }
 }

@@ -44,7 +44,12 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
-
+    public Optional<Member> findByJumin(String jumin) {
+        List<Member> result = em.createQuery("select m from Member m where m.jumin = :jumin", Member.class)
+                .setParameter("jumin", jumin)
+                .getResultList();
+        return result.stream().findAny();
+    }
     @Override
     public Optional<Member> findBySex(String sex) {
         List<Member> result = em.createQuery("select m from Member m where m.sex = :sex", Member.class)
