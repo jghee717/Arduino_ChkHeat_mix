@@ -363,11 +363,27 @@
                                 <input type="email" name="email" id="email"style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
+                            <script language="JavaScript">
+                                function setResinum(obj)
+                                {
+                                    ju = obj.value;
+                                    ju = ju.replace("-","");
+                                    if(ju.length > 6)
+                                    {
+                                        ju1 = ju.substring(0,6);
+                                        ju2 = ju.substring(6,7);
+                                        for(i=1; i<ju.substring(6).length && i < 7; i++)
+                                        {
+                                            ju2 = ju2 + "*";
+                                        }
+                                        obj.value = ju1+"-"+ju2;
+                                    }
+                                }
+                            </script>
                             <div style="display: inline">
                             <div class="form-gp">
                                 <label for="resinum">주민등록번호</label>
-                                <input type="text" id="resinum" name="resinum1" size="10" maxlength="6" style="width: 35%">
-                                -<input type="pw" name="resinum2" size="10" maxlength="7" style="width: 35%">
+                                <input type="text" id="resinum" name="resinum" onkeyup="setResinum(this)" size="10" maxlength="14" style="width: 70%">
                             </div>
                             </div>
                             <div style="display: inline">

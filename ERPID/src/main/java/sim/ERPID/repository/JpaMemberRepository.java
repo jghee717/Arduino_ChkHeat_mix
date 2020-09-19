@@ -2,15 +2,18 @@ package sim.ERPID.repository;
 
 import sim.ERPID.domain.Member;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
 public class JpaMemberRepository implements MemberRepository {
 
+    @PersistenceContext
     private final EntityManager em; //jpa를 쓰려면 엔티티매니저
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
     }
+
     public Member save(Member member) {
         em.persist(member);
         return member;
