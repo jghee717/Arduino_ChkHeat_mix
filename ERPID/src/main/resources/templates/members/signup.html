@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" >
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - SEO Dashboard</title>
+    <title>simhrms - 사원 등록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.ico">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -221,9 +221,9 @@
                         <nav>
                             <ul id="nav_menu">
                                 <li>
-                                    <a href="javascript:void(0)"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                    <a href="javascript:void(0)"><i class="ti-dashboard"></i><span>사원등록</span></a>
                                     <ul class="submenu">
-                                        <li><a href="index.html">ICO dashboard</a></li>
+                                        <li><a href="/members/new">ICO 사원등록</a></li>
                                         <li><a href="index2.html">Ecommerce dashboard</a></li>
                                         <li><a href="index3.html">SEO dashboard</a></li>
                                     </ul>
@@ -345,22 +345,22 @@
                         <div class="login-form-body col-md-4  mt-md-5 mb-3">
                             <div class="form-gp">
                                 <label for="number">사원번호</label>
-                                <input type="text" id="number" name="number"style="width: 35%">
+                                <input type="number" id="number" name="number" style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="name">성명</label>
-                                <input type="text" id="name" name="name"style="width: 35%">
+                                <input type="text" id="name" name="name" style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="pw">비밀번호</label>
-                                <input type="password" name="pw" id="pw"style="width: 50%">
+                                <input type="password" name="pw" id="pw" style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email"style="width: 50%">
+                                <input type="email" name="email" id="email" style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
                             <script language="JavaScript">
@@ -381,10 +381,19 @@
                                 }
                             </script>
                             <div style="display: inline">
+<<<<<<< HEAD
                             <div class="form-gp">
                                 <label for="resinum">주민등록번호</label>
                                 <input type="text" id="resinum" name="resinum" onkeyup="setResinum(this)" size="10" maxlength="14" style="width: 70%">
                             </div>
+=======
+                                <div class="form-gp">
+                                    <label for="resinum">주민등록번호</label>
+                                    <input type="number" id="resinum" name="resinum1" size="10" maxlength="6"
+                                           style="width: 35%">
+                                    -<input type="password" name="resinum2" size="10" maxlength="7" style="width: 35%">
+                                </div>
+>>>>>>> origin/master
                             </div>
                             <div style="display: inline">
                                 <label class="form-gp">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -400,9 +409,9 @@
                                 </div>
                                 <div class="text-danger"></div>
                             </div>
-                            <div class="form-gp" >
+                            <div class="form-gp">
                                 <label for="address">주소</label>
-                                <input type="text" id="address" name= "address" style="bottom: 30px">
+                                <input type="text" id="address" name="address" style="bottom: 30px">
                             </div>
 
                         </div>
@@ -440,7 +449,8 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="join" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자</label>
+                                <label for="join"
+                                       class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자</label>
                                 <input class="form-control" type="date" value="2020-09-08" id="join" style="width: 50%">
                             </div>
                             <div style="bottom: 20px">
