@@ -376,58 +376,16 @@
     <table id="member-table" name="member-table" class="data-tables row-border order-column text-center">
         <thead>
         <tr>
-            <th>No</th>
-            <th>지역선택</th>
-            <th>영업담당</th>
-            <th>지원팀</th>
-            <th>운영자명</th>
-            <th>매장명</th>
+            <th>Index</th>
+            <th>이름</th>
+            <th>사원 번호</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td name="no">1</td>
-            <td>서울</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>경기도</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>충청남도</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>충청북도</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>전라남도</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>전라북도</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>경상남도</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>경상북도</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>강원도</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>제주도</td>
-        </tr>
-        <tr>
-            <td>99</td>
-            <td>해외</td>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.number}"></td>
         </tr>
         </tbody>
     </table>

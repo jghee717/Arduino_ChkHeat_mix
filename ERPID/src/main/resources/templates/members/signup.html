@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" >
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -344,8 +344,15 @@
                         </div>
                         <div class="login-form-body col-md-4  mt-md-5 mb-3">
                             <div class="form-gp">
+                                <script>
+                                    function onlyNumber() {
+                                        if ((event.keyCode < 48) || (event.keyCode > 57))
+                                            event.returnValue = false;
+                                    }
+                                </script>
                                 <label for="number">사원번호</label>
-                                <input type="number" id="number" name="number" style="width: 35%">
+                                <input type="text" id="number" name="number" maxlength="10" onkeypress="onlyNumber();"
+                                       style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
@@ -364,36 +371,26 @@
                                 <div class="text-danger"></div>
                             </div>
                             <script language="JavaScript">
-                                function setResinum(obj)
-                                {
+                                function setjumin(obj) {
                                     ju = obj.value;
-                                    ju = ju.replace("-","");
-                                    if(ju.length > 6)
-                                    {
-                                        ju1 = ju.substring(0,6);
-                                        ju2 = ju.substring(6,7);
-                                        for(i=1; i<ju.substring(6).length && i < 7; i++)
-                                        {
+                                    ju = ju.replace("-", "");
+                                    if (ju.length > 6) {
+                                        ju1 = ju.substring(0, 6);
+                                        ju2 = ju.substring(6, 7);
+                                        for (i = 1; i < ju.substring(6).length && i < 7; i++) {
                                             ju2 = ju2 + "*";
                                         }
-                                        obj.value = ju1+"-"+ju2;
+                                        obj.value = ju1 + "-" + ju2;
                                     }
                                 }
                             </script>
                             <div style="display: inline">
-<<<<<<< HEAD
-                            <div class="form-gp">
-                                <label for="resinum">주민등록번호</label>
-                                <input type="text" id="resinum" name="resinum" onkeyup="setResinum(this)" size="10" maxlength="14" style="width: 70%">
-                            </div>
-=======
+
                                 <div class="form-gp">
-                                    <label for="resinum">주민등록번호</label>
-                                    <input type="number" id="resinum" name="resinum1" size="10" maxlength="6"
-                                           style="width: 35%">
-                                    -<input type="password" name="resinum2" size="10" maxlength="7" style="width: 35%">
+                                    <label for="jumin">주민등록번호</label>
+                                    <input type="text" id="jumin" name="jumin" onkeyup="setjumin(this)" size="10"
+                                           maxlength="14" style="width: 70%" onkeypress="onlyNumber()">
                                 </div>
->>>>>>> origin/master
                             </div>
                             <div style="display: inline">
                                 <label class="form-gp">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -690,6 +687,7 @@
     <script src="/js/plugins.js"></script>
     <script src="/js/scripts.js"></script>
 </div>
+
 </body>
 
 </html>
