@@ -67,6 +67,24 @@ public class MemoryMemberRepository implements MemberRepository {
                 .filter(member -> member.getAddress().equals(address))
                 .findAny();
     }
+    @Override
+    public Optional<Member> findByDepartment(String department) {
+        return store.values().stream()
+                .filter(member -> member.getAddress().equals(department))
+                .findAny();
+    }
+    @Override
+    public Optional<Member> findByPosition(String position) {
+        return store.values().stream()
+                .filter(member -> member.getAddress().equals(position))
+                .findAny();
+    }
+    @Override
+    public Optional<Member> findByStatus(String status) {
+        return store.values().stream()
+                .filter(member -> member.getAddress().equals(status))
+                .findAny();
+    }
 
     @Override
     public List<Member> findAll() {

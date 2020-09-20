@@ -12,6 +12,9 @@ public class MemberForm {
     private String sex;
     private String address;
     private String jumin;
+    private String department;
+    private String position;
+    private String status;
 
     public String getName() {
         return name;
@@ -66,5 +69,29 @@ public class MemberForm {
 
     public void setJumin(String jumin) {
         this.jumin = jumin;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
