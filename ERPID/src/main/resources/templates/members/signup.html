@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -351,7 +351,7 @@
                                     }
                                 </script>
                                 <label for="number">사원번호</label>
-                                <input type="text" id="number" name="number" maxlength="10" onkeypress="onlyNumber();"
+                                <input type="text" id="number" name="number" maxlength="8" onkeypress="onlyNumber();"
                                        style="width: 35%">
                                 <div class="text-danger"></div>
                             </div>
@@ -414,36 +414,33 @@
                         </div>
                         <div class="login-form-body col-md-4 mt-md-5 mb-3">
                             <div class="form-gp">
-                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    부서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <div class="dropdown-menu" id="department" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                </div>
+                                <select id="department" name="department" value="hid" class="btn btn-flat btn-light dropdown-toggle">
+                                    <option value="hid" hidden="hidden">부서</option>
+                                    <option value="개발">개발</option>
+                                    <option value="기획">기획</option>
+                                    <option value="영업">영업</option>
+                                </select>
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
-                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    직책&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <div class="dropdown-menu" id="position" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                </div>
+                                <select id="position" name="position" value="hidpo" class="btn btn-flat btn-light dropdown-toggle">
+                                    <option value="hidpo" hidden="hidden">직위</option>
+                                    <option value="부장">부장</option>
+                                    <option value="차장">차장</option>
+                                    <option value="과장">과장</option>
+                                    <option value="대리">대리</option>
+                                    <option value="주임">주임</option>
+                                    <option value="사원">사원</option>
+                                </select>
                                 <div class="text-danger"></div>
                             </div>
                             <div class="form-gp">
-                                <button type="button" class="btn btn-flat btn-light dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    재직 구분
-                                </button>
-                                <div class="dropdown-menu" id="status" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                    <a class="dropdown-item" href="#">Dropdown link</a>
-                                </div>
+                                <select id="status" name="status" value="hidst" class="btn btn-flat btn-light dropdown-toggle">
+                                    <option value="hidst" hidden="hidden">재직 현황</option>
+                                    <option value="재직">재직</option>
+                                    <option value="휴직">휴직</option>
+                                    <option value="퇴직">퇴직</option>
+                                </select>
                             </div>
                             <div>
                                 <label for="join"
