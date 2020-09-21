@@ -3,6 +3,7 @@ package sim.ERPID.repository;
 import sim.ERPID.domain.Member;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,8 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+
+
     public Optional<Member> findByPw(String pw) {
         List<Member> result = em.createQuery("select m from Member m where m.pw = :pw", Member.class)
                 .setParameter("pw", pw)
@@ -87,6 +90,23 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+
+    @Override
+    public Optional<Member> findByHire(Date hire) {
+        List<Member> result = em.createQuery("select m from Member m where m.hire = :hire", Member.class)
+                .setParameter("hire", hire)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findByResign(Date resign) {
+        List<Member> result = em.createQuery("select m from Member m where m.resign = :resign", Member.class)
+                .setParameter("resign", resign)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
 
     @Override
     public Optional<Member> findByNumber(Integer number) {

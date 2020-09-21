@@ -29,16 +29,12 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<!-- preloader area start -->
 <div id="preloader">
     <div class="loader"></div>
 </div>
-<!-- preloader area end -->
-<!-- main wrapper start -->
 <div class="horizontal-main-wrapper">
     <!-- main header area start -->
     <div class="mainheader-area">
-        <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
@@ -210,11 +206,9 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- main header area end -->
     <!-- header area start -->
     <div class="header-area header-bottom">
-        <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-9  d-none d-lg-block">
                     <div class="horizontal-menu">
@@ -323,13 +317,10 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- header area end -->
     <!-- page title area end -->
     <div class="horizontal-main-wrapper">
-        <!-- main header area start -->
-        <div class="main-content-inner">
-            <div class="container">
+
                 <form action="/members/new" method="post">
                     <div class="login-form-head">
                         <h4>사원 등록</h4>
@@ -344,12 +335,6 @@
                         </div>
                         <div class="login-form-body col-md-4  mt-md-5 mb-3">
                             <div class="form-gp">
-                                <script>
-                                    function onlyNumber() {
-                                        if ((event.keyCode < 48) || (event.keyCode > 57))
-                                            event.returnValue = false;
-                                    }
-                                </script>
                                 <label for="number">사원번호</label>
                                 <input type="text" id="number" name="number" maxlength="8" onkeypress="onlyNumber();"
                                        style="width: 35%">
@@ -370,29 +355,14 @@
                                 <input type="email" name="email" id="email" style="width: 50%">
                                 <div class="text-danger"></div>
                             </div>
-                            <script language="JavaScript">
-                                function setjumin(obj) {
-                                    ju = obj.value;
-                                    ju = ju.replace("-", "");
-                                    if (ju.length > 6) {
-                                        ju1 = ju.substring(0, 6);
-                                        ju2 = ju.substring(6, 7);
-                                        for (i = 1; i < ju.substring(6).length && i < 7; i++) {
-                                            ju2 = ju2 + "*";
-                                        }
-                                        obj.value = ju1 + "-" + ju2;
-                                    }
-                                }
-                            </script>
-                            <div style="display: inline">
 
+                            <div style="display: inline">
                                 <div class="form-gp">
                                     <label for="jumin">주민등록번호</label>
                                     <input type="text" id="jumin" name="jumin" onkeyup="setjumin(this)" size="10"
                                            maxlength="14" style="width: 70%" onkeypress="onlyNumber()">
                                 </div>
                             </div>
-
                             <div style="display: inline">
                                 <label class="form-gp">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="custom-control custom-radio custom-control-inline">
@@ -404,27 +374,29 @@
                                     <label class="custom-control-label" for="sex1">여</label>
                                 </div>
                                 <div class="text-danger"></div>
-                            </div>
-
+                            </div><br>
                             <div class="form-gp">
                                 <label for="address">주소</label>
                                 <input type="text" id="address" name="address" style="bottom: 30px">
                             </div>
-
                         </div>
                         <div class="login-form-body col-md-4 mt-md-5 mb-3">
-                            <div class="form-gp">
-                                <select id="department" name="department" value="hid" class="btn btn-flat btn-light dropdown-toggle">
-                                    <option value="hid" hidden="hidden">부서</option>
-                                    <option value="개발">개발</option>
-                                    <option value="기획">기획</option>
-                                    <option value="영업">영업</option>
+                            <div class="form-gp" style="display: inline">
+                                <label for="department">부서</label>
+                                <select id="department" name="department" value="hid"
+                                        class="btn btn-flat btn-light dropdown-toggle" style="width:120px;">
+                                        <option value="hid" hidden="hidden"></option>
+                                        <option value="개발">개발</option>
+                                        <option value="기획">기획</option>
+                                        <option value="영업">영업</option>
                                 </select>
-                                <div class="text-danger"></div>
                             </div>
-                            <div class="form-gp">
-                                <select id="position" name="position" value="hidpo" class="btn btn-flat btn-light dropdown-toggle">
-                                    <option value="hidpo" hidden="hidden">직위</option>
+                            <br><br>
+                            <div class="form-gp" style="display: inline">
+                                <label for="position">직위</label>
+                                <select id="position" name="position" value="hidpo"
+                                        class="btn btn-flat btn-light dropdown-toggle" style="width:120px;">
+                                    <option value="hidpo" hidden="hidden"></option>
                                     <option value="부장">부장</option>
                                     <option value="차장">차장</option>
                                     <option value="과장">과장</option>
@@ -432,23 +404,25 @@
                                     <option value="주임">주임</option>
                                     <option value="사원">사원</option>
                                 </select>
-                                <div class="text-danger"></div>
                             </div>
-                            <div class="form-gp">
-                                <select id="status" name="status" value="hidst" class="btn btn-flat btn-light dropdown-toggle">
-                                    <option value="hidst" hidden="hidden">재직 현황</option>
+                            <br><br>
+                            <div class="form-gp"style="display: inline">
+                                <label for="status">상태</label>
+                                <select id="status" name="status" value="hidst"
+                                        class="btn btn-flat btn-light dropdown-toggle" style="width:120px;">
+                                    <option value="hidst" hidden="hidden"></option>
                                     <option value="재직">재직</option>
                                     <option value="휴직">휴직</option>
                                     <option value="퇴직">퇴직</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="join"
-                                       class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입사일자</label>
-                                <input class="form-control" type="date" value="2020-09-08" id="join" style="width: 50%">
+                            <div><br>
+                                <label for="hire"
+                                       class="col-form-label">입사일자</label>
+                                <input class="form-control" type="date" value="2020-09-08" id="hire" style="width: 50%">
                             </div>
                             <div style="bottom: 20px">
-                                <label for="resign" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴사일자</label>
+                                <label for="resign" class="col-form-label">퇴사일자</label>
                                 <input class="form-control" type="date" value="" id="resign" style="width: 50%">
                             </div>
                         </div>
@@ -458,8 +432,7 @@
                         <button id="form_submit" type="submit">가입하기<i class="ti-arrow-right"></i></button>
                     </div>
                 </form>
-            </div>
-        </div>
+
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
@@ -648,6 +621,38 @@
             </div>
         </div>
     </div>
+
+    <script>
+        //주민등록번호 정규식
+        function setjumin(obj) {
+            ju = obj.value;
+            ju = ju.replace("-", "");
+            if (ju.length > 6) {
+                ju1 = ju.substring(0, 6);
+                ju2 = ju.substring(6, 7);
+                for (i = 1; i < ju.substring(6).length && i < 7; i++) {
+                    ju2 = ju2 + "*";
+                }
+                obj.value = ju1 + "-" + ju2;
+            }
+        }
+
+        //숫자만 입력
+        function onlyNumber() {
+            if ((event.keyCode < 48) || (event.keyCode > 57))
+                event.returnValue = false;
+        }
+    </script>
+    <style>
+        select{
+            text-align-last:right;
+            padding-left: 10px;
+        }
+        option{
+            text-align-last:right;
+            padding-left: 30px;
+        }
+    </style>
     <!-- offset area end -->
     <!-- jquery latest version -->
     <script src="/js/vendor/jquery-2.2.4.min.js"></script>

@@ -23,7 +23,8 @@
 
     <!--datatables-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
     <!-- modernizr css -->
@@ -333,75 +334,44 @@
     </div>
     <!-- header area end -->
     <!-- page title area end -->
-
-
-    <style>
-        table {
-            width: 100%;
-            margin: 0 auto;
-            clear: both;
-            border-collapse: collapse !important;
-            border-spacing: 0;
-        }
-        table td{
-            height : 40px !important;
-        }
-        div.dataTables_wrapper div.dataTables_length select{
-            width:60px;
-        }
-        div.dataTables_wrapper{
-            margin: 0 auto;
-        }
-        .dataTables_paginate {
-            float: left  !important;
-            margin-left:530px !important;
-        }
-        table.dataTable thead .sorting,
-        table.dataTable thead .sorting_asc,
-        table.dataTable thead .sorting_desc {
-            background : none;
-        }
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding : 0px;
-            margin-left: 0px;
-            border: 0px;
-        }
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            border: 0px;
-        }
-
-        th { white-space: nowrap; }
-    </style>
     <div class="single-table">
-    <table id="member-table" name="member-table" class="data-tables row-border order-column text-center">
-        <thead>
-        <tr>
-            <th>Index</th>
-            <th>이름</th>
-            <th>사원 번호</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="member : ${members}">
-            <td th:text="${member.id}"></td>
-            <td th:text="${member.name}"></td>
-            <td th:text="${member.number}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+        <table id="member-table" name="member-table" class="data-tables row-border order-column text-center">
+            <thead>
+            <tr>
+                <th>사원번호</th>
+                <th>이름</th>
+                <th>직책</th>
+                <th>부서</th>
+                <th>입사일자</th>
+                <th>이메일</th>
+                <th>주소</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.number}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.position}"></td>
+                <td th:text="${member.department}"></td>
+                <td th:text="${member.hire}"></td>
+                <td th:text="${member.email}"></td>
+                <td th:text="${member.address}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
-    <!-- main content area end -->
-    <!-- footer area start-->
-    <footer>
-        <div class="footer-area">
-            <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
-            </p>
-        </div>
-    </footer>
-    <!-- footer area end-->
+<!-- main content area end -->
+<!-- footer area start-->
+<footer>
+    <div class="footer-area">
+        <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
+        </p>
+    </div>
+</footer>
+<!-- footer area end-->
 </div>
 <!-- main wrapper start -->
 <!-- offset area start -->
@@ -581,6 +551,7 @@
         </div>
     </div>
 </div>
+
 <!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/js/vendor/jquery-2.2.4.min.js"></script>
@@ -621,15 +592,15 @@
 <script src="/js/plugins.js"></script>
 <script src="/js/scripts.js"></script>
 <script>
-    $.fn.DataTable.ext.pager.numbers_no_ellipses = function(page, pages){
+    $.fn.DataTable.ext.pager.numbers_no_ellipses = function (page, pages) {
         var numbers = [];
         var buttons = $.fn.DataTable.ext.pager.numbers_length;
-        var half = Math.floor( buttons / 2 );
+        var half = Math.floor(buttons / 2);
 
-        var _range = function ( len, start ){
+        var _range = function (len, start) {
             var end;
 
-            if ( typeof start === "undefined" ){
+            if (typeof start === "undefined") {
                 start = 0;
                 end = len;
             } else {
@@ -637,40 +608,40 @@
                 start = len;
             }
             var out = [];
-            for ( var i = start ; i < end; i++ ){ out.push(i); }
+            for (var i = start; i < end; i++) {
+                out.push(i);
+            }
 
             return out;
         };
 
 
-        if ( pages <= buttons ) {
-            numbers = _range( 0, pages );
+        if (pages <= buttons) {
+            numbers = _range(0, pages);
 
-        } else if ( page <= half ) {
-            numbers = _range( 0, buttons);
+        } else if (page <= half) {
+            numbers = _range(0, buttons);
 
-        } else if ( page >= pages - 1 - half ) {
-            numbers = _range( pages - buttons, pages );
+        } else if (page >= pages - 1 - half) {
+            numbers = _range(pages - buttons, pages);
 
         } else {
-            numbers = _range( page - half, page + half + 1);
+            numbers = _range(page - half, page + half + 1);
         }
 
         numbers.DT_el = 'span';
-        if(page == 0){
-            return [numbers, "next", "last" ];
-        }
-        else if(page == 1){
-            return ["previous",numbers, "next", "last" ];
-        }
-        else{
-            return [ "first","previous",numbers, "next", "last" ];
+        if (page == 0) {
+            return [numbers, "next", "last"];
+        } else if (page == 1) {
+            return ["previous", numbers, "next", "last"];
+        } else {
+            return ["first", "previous", numbers, "next", "last"];
         }
 
     };
 
     $(document).ready(function () {
-        $.fn.dataTable.ext.pager.numbers_length=5;
+        $.fn.dataTable.ext.pager.numbers_length = 5;
 
         $("#member-table").DataTable({
             "dom": '<"pull-left"f>i<"pull-right"l>tp',
@@ -706,7 +677,52 @@
         })
     });
 </script>
-</div>
+<style>
+    table {
+        width: 100%;
+        margin: 0 auto;
+        clear: both;
+        border-collapse: collapse !important;
+        border-spacing: 0;
+    }
+
+    table td {
+        height: 40px !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length select {
+        width: 60px;
+    }
+
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+
+    .dataTables_paginate {
+        float: left !important;
+        margin-left: 530px !important;
+    }
+
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0px;
+        margin-left: 0px;
+        border: 0px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        border: 0px;
+    }
+
+    th {
+        white-space: nowrap;
+    }
+</style>
 </body>
 
 </html>

@@ -2,6 +2,8 @@ package sim.ERPID.repository;
 
 import sim.ERPID.domain.Member;
 
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ public interface MemberRepository {
     Optional<Member> findByDepartment(String department);
     Optional<Member> findByPosition(String position);
     Optional<Member> findByStatus(String status);
+    Optional<Member> findByHire(Date hire);
+    Optional<Member> findByResign(Date resign);
 
     List<Member> findAll();
 }

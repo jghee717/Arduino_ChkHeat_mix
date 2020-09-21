@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
+
 
 @Entity
 @Setter @Getter
@@ -24,7 +26,8 @@ public class Member {
     private String department;
     private String position;
     private String status;
-
+    private Date hire;
+    private Date resign;
 
 
 
@@ -115,5 +118,22 @@ public class Member {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getHire() {
+        return hire;
+    }
+
+    public void setHire(Date hire) {
+        this.hire = hire;
+    }
+
+
+    public Date getResign() {
+        return resign;
+    }
+
+    public void setResign(Date resign) {
+        this.resign = resign;
     }
 }

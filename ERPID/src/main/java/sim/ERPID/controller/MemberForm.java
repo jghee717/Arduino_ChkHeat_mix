@@ -3,6 +3,9 @@ package sim.ERPID.controller;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
+
 @Getter @Setter
 public class MemberForm {
     private String name;
@@ -15,6 +18,8 @@ public class MemberForm {
     private String department;
     private String position;
     private String status;
+    private Date hire;
+    private Date resign;
 
     public String getName() {
         return name;
@@ -93,5 +98,21 @@ public class MemberForm {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getHire() {
+        return hire;
+    }
+
+    public void setHire(Date hire) {
+        this.hire = hire;
+    }
+
+    public Date getResign() {
+        return resign;
+    }
+
+    public void setResign(Date resign) {
+        this.resign = resign;
     }
 }

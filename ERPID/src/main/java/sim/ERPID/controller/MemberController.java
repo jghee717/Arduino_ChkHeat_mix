@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sim.ERPID.domain.Member;
 import sim.ERPID.service.MemberService;
 
+
 import java.util.List;
 
 @Controller
@@ -40,6 +41,8 @@ public class MemberController {
         member.setDepartment(form.getDepartment());
         member.setPosition(form.getPosition());
         member.setStatus(form.getStatus());
+        member.setHire(form.getHire());
+        member.setResign(form.getResign());
         memberService.join(member);
         return "redirect:/";
     }
