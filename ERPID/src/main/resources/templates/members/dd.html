@@ -1,0 +1,905 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>sim - 인사 정보 등록</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/metisMenu.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+    <!-- others css -->
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/default-css.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--datatables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="/"><img src="/images/icon/logo2.png" alt="logo"></a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li class="active">
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-dashboard"></i><span>인사 정보</span></a>
+                            <ul class="collapse">
+                                <li class="active"><a href="/members/new">인사 정보 등록</a></li>
+                                <li><a href="/members">사원 테이블</a></li>
+                                <li><a href="index3.html">SEO dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-layout-sidebar-left"></i><span>Sidebar
+                                        Types
+                                    </span></a>
+                            <ul class="collapse">
+                                <li><a href="index.html">Left Sidebar</a></li>
+                                <li><a href="index3-horizontalmenu.html">Horizontal Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-pie-chart"></i><span>Charts</span></a>
+                            <ul class="collapse">
+                                <li><a href="barchart.html">bar chart</a></li>
+                                <li><a href="linechart.html">line Chart</a></li>
+                                <li><a href="piechart.html">pie chart</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
+                            <ul class="collapse">
+                                <li><a href="accordion.html">Accordion</a></li>
+                                <li><a href="alert.html">Alert</a></li>
+                                <li><a href="badge.html">Badge</a></li>
+                                <li><a href="button.html">Button</a></li>
+                                <li><a href="button-group.html">Button Group</a></li>
+                                <li><a href="cards.html">Cards</a></li>
+                                <li><a href="dropdown.html">Dropdown</a></li>
+                                <li><a href="list-group.html">List Group</a></li>
+                                <li><a href="media-object.html">Media Object</a></li>
+                                <li><a href="modal.html">Modal</a></li>
+                                <li><a href="pagination.html">Pagination</a></li>
+                                <li><a href="popovers.html">Popover</a></li>
+                                <li><a href="progressbar.html">Progressbar</a></li>
+                                <li><a href="tab.html">Tab</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="form.html">Form</a></li>
+                                <li><a href="grid.html">grid system</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>icons</span></a>
+                            <ul class="collapse">
+                                <li><a href="fontawesome.html">fontawesome icons</a></li>
+                                <li><a href="themify.html">themify icons</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <span>Tables</span></a>
+                            <ul class="collapse">
+                                <li><a href="table-basic.html">basic table</a></li>
+                                <li><a href="table-layout.html">table layout</a></li>
+                                <li><a href="datatable.html">datatable</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
+                        <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i>
+                                <span>Pages</span></a>
+                            <ul class="collapse">
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="login2.html">Login 2</a></li>
+                                <li><a href="login3.html">Login 3</a></li>
+                                <li><a href="register.html">Register</a></li>
+                                <li><a href="register2.html">Register 2</a></li>
+                                <li><a href="register3.html">Register 3</a></li>
+                                <li><a href="register4.html">Register 4</a></li>
+                                <li><a href="screenlock.html">Lock Screen</a></li>
+                                <li><a href="screenlock2.html">Lock Screen 2</a></li>
+                                <li><a href="reset-pass.html">reset password</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-exclamation-triangle"></i>
+                                <span>Error</span></a>
+                            <ul class="collapse">
+                                <li><a href="404.html">Error 404</a></li>
+                                <li><a href="403.html">Error 403</a></li>
+                                <li><a href="500.html">Error 500</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i> <span>Multi
+                                        level menu</span></a>
+                            <ul class="collapse">
+                                <li><a href="#">Item level (1)</a></li>
+                                <li><a href="#">Item level (1)</a></li>
+                                <li><a href="#" aria-expanded="true">Item level (1)</a>
+                                    <ul class="collapse">
+                                        <li><a href="#">Item level (2)</a></li>
+                                        <li><a href="#">Item level (2)</a></li>
+                                        <li><a href="#">Item level (2)</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Item level (1)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- 사이드 바 메뉴 -->
+
+    <!-- 서치창~ 설정버튼  -->
+    <div class="main-content">
+        <!-- header area start -->
+        <div class="header-area">
+            <div class="row align-items-center">
+                <!-- nav and search button -->
+                <div class="col-md-6 col-sm-8 clearfix">
+                    <div class="nav-btn pull-left">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="search-box pull-left">
+                        <form action="#">
+                            <input type="text" name="search" placeholder="Search..." required>
+                            <i class="ti-search"></i>
+                        </form>
+                    </div>
+                </div>
+                <!-- profile info & task notification -->
+                <div class="col-md-6 col-sm-4 clearfix">
+                    <ul class="notification-area pull-right">
+                        <li id="full-view"><i class="ti-fullscreen"></i></li>
+                        <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+                        <li class="dropdown">
+                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                <span>2</span>
+                            </i>
+                            <div class="dropdown-menu bell-notify-box notify-box">
+                                <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                                <div class="nofity-list">
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                        <div class="notify-text">
+                                            <p>You have Changed Your Password</p>
+                                            <span>Just Now</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                        <div class="notify-text">
+                                            <p>New Commetns On Post</p>
+                                            <span>30 Seconds ago</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
+                                        <div class="notify-text">
+                                            <p>Some special like you</p>
+                                            <span>Just Now</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                        <div class="notify-text">
+                                            <p>New Commetns On Post</p>
+                                            <span>30 Seconds ago</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
+                                        <div class="notify-text">
+                                            <p>Some special like you</p>
+                                            <span>Just Now</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                        <div class="notify-text">
+                                            <p>You have Changed Your Password</p>
+                                            <span>Just Now</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                        <div class="notify-text">
+                                            <p>You have Changed Your Password</p>
+                                            <span>Just Now</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
+                            <div class="dropdown-menu notify-box nt-enveloper-box">
+                                <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                                <div class="nofity-list">
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img1.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">Hey I am waiting for you...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img2.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">When you can connect with me...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img3.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">I missed you so much...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img4.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">Your product is completely Ready...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img2.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">Hey I am waiting for you...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img1.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">Hey I am waiting for you...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="notify-item">
+                                        <div class="notify-thumb">
+                                            <img src="/images/author/author-img3.jpg" alt="image">
+                                        </div>
+                                        <div class="notify-text">
+                                            <p>Aglae Mayer</p>
+                                            <span class="msg">Hey I am waiting for you...</span>
+                                            <span>3:15 PM</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="settings-btn">
+                            <i class="ti-settings"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /서치창~ 설정버튼 -->
+
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">인사 정보</h4>
+                        <ul class="breadcrumbs pull-left">
+                            <li><a href="/">인사 정보</a></li>
+                            <li><span>인사 정보 등록</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="/images/author/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">sim<i class="fa fa-angle-down"></i>
+                        </h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Message</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <!-- market value area start -->
+            <div class="row mt-5 mb-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <h4 class="header-title mb-0">기본 정보</h4>
+                                <button type="button" class="btn btn-flat btn-outline-dark mb-3">사원 등록</button>
+                            </div>
+                            <div class="single-table">
+                                <table id="member-table" name="member-table"
+                                       class="data-tables row-border order-column text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>사원번호</th>
+                                        <th>이름</th>
+                                        <th>직책</th>
+                                        <th>부서</th>
+                                        <th>입사일자</th>
+                                        <th>이메일</th>
+                                        <th>주소</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="member : ${members}">
+                                        <td th:text="${member.number}"></td>
+                                        <td th:text="${member.name}"></td>
+                                        <td th:text="${member.position}"></td>
+                                        <td th:text="${member.department}"></td>
+                                        <td th:text="${member.hire}"></td>
+                                        <td th:text="${member.email}"></td>
+                                        <td th:text="${member.address}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- market value area end -->
+            <!-- row area start -->
+            <div class="row">
+                <!-- Live Crypto Price area start -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Live Crypto Price</h4>
+                            <div class="cripto-live mt-5">
+                                <ul>
+                                    <li>
+                                        <div class="icon b">b</div>
+                                        Bitcoin<span><i class="fa fa-long-arrow-up"></i>$876909.00</span></li>
+                                    <li>
+                                        <div class="icon l">l</div>
+                                        Litecoin<span><i class="fa fa-long-arrow-up"></i>$29780.00</span></li>
+                                    <li>
+                                        <div class="icon d">d</div>
+                                        Dashcoin<span><i class="fa fa-long-arrow-up"></i>$13276.00</span></li>
+                                    <li>
+                                        <div class="icon b">b</div>
+                                        Bitcoindash<span><i class="fa fa-long-arrow-down"></i>$5684.890</span></li>
+                                    <li>
+                                        <div class="icon e">e</div>
+                                        Euthorium<span><i class="fa fa-long-arrow-down"></i>$3890.98</span></li>
+                                    <li>
+                                        <div class="icon t">b</div>
+                                        Tcoin<span><i class="fa fa-long-arrow-up"></i>$750.789</span></li>
+                                    <li>
+                                        <div class="icon b">b</div>
+                                        Bitcoin<span><i class="fa fa-long-arrow-up"></i>$325.037</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Live Crypto Price area end -->
+                <!-- trading history area start -->
+                <div class="col-lg-8 mt-sm-30 mt-xs-30">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <h4 class="header-title">Trading History</h4>
+                                <div class="trd-history-tabs">
+                                    <ul class="nav" role="tablist">
+                                        <li>
+                                            <a class="active" data-toggle="tab" href="#buy_order" role="tab">Buy
+                                                Order</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#sell_order" role="tab">Sell Order</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </div>
+                            <div class="trad-history mt-4">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="buy_order" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="dbkit-table">
+                                                <tr class="heading-td">
+                                                    <td>Trading ID</td>
+                                                    <td>Time</td>
+                                                    <td>Status</td>
+                                                    <td>Amount</td>
+                                                    <td>Last Trade</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>78211</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$758.90</td>
+                                                    <td>$05245.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>782782</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$77878.90</td>
+                                                    <td>$7778.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>89675978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$0768.90</td>
+                                                    <td>$0945.090</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sell_order" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="dbkit-table">
+                                                <tr class="heading-td">
+                                                    <td>Trading ID</td>
+                                                    <td>Time</td>
+                                                    <td>Status</td>
+                                                    <td>Amount</td>
+                                                    <td>Last Trade</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8964978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$445.90</td>
+                                                    <td>$094545.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>89675978</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$78.90</td>
+                                                    <td>$074852945.090</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>78527878</td>
+                                                    <td>4.00 AM</td>
+                                                    <td>Pending</td>
+                                                    <td>$0768.90</td>
+                                                    <td>$65465.090</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- trading history area end -->
+            </div>
+            <!-- row area end -->
+
+            <!-- row area start-->
+        </div>
+    </div>
+    <!-- main content area end -->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
+</div>
+<!-- page container area end -->
+<!-- offset area start -->
+<div class="offset-area">
+    <div class="offset-close"><i class="ti-close"></i></div>
+    <ul class="nav offset-menu-tab">
+        <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
+        <li><a data-toggle="tab" href="#settings">Settings</a></li>
+    </ul>
+    <div class="offset-content tab-content">
+        <div id="activity" class="tab-pane fade in show active">
+            <div class="recent-activity">
+                <div class="timeline-task">
+                    <div class="icon bg1">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Added</h4>
+                        <span class="time"><i class="ti-time"></i>7 Minutes Ago</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>You missed you Password!</h4>
+                        <span class="time"><i class="ti-time"></i>09:20 Am</span>
+                    </div>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="fa fa-bomb"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Member waiting for you Attention</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="ti-signal"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>You Added Kaji Patha few minutes ago</h4>
+                        <span class="time"><i class="ti-time"></i>01 minutes ago</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg1">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Ratul Hamba sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Hello sir , where are you, i am egerly waiting for you.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="fa fa-bomb"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="ti-signal"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="settings" class="tab-pane fade">
+            <div class="offset-settings">
+                <h4>General Settings</h4>
+                <div class="settings-list">
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Notifications</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch1"/>
+                                <label for="switch1">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Keep it 'On' When you want to get all the notification.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show recent activity</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch2"/>
+                                <label for="switch2">Toggle</label>
+                            </div>
+                        </div>
+                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show your emails</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch3"/>
+                                <label for="switch3">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Show email so that easily find you.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show Task statistics</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch4"/>
+                                <label for="switch4">Toggle</label>
+                            </div>
+                        </div>
+                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Notifications</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch5"/>
+                                <label for="switch5">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Use checkboxes when looking for yes or no answers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- offset area end -->
+<!-- jquery latest version -->
+<script src="/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/metisMenu.min.js"></script>
+<script src="/js/jquery.slimscroll.min.js"></script>
+<script src="/js/jquery.slicknav.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<!-- start chart js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<!-- start highcharts js -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- start zingchart js -->
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<!-- all line chart activation -->
+<script src="/js/line-chart.js"></script>
+<!-- all pie chart -->
+<script src="/js/pie-chart.js"></script>
+<!-- others plugins -->
+<script src="/js/plugins.js"></script>
+<script src="/js/scripts.js"></script>
+<!--datatables 옵션 -->
+<script>
+    $.fn.DataTable.ext.pager.numbers_no_ellipses = function (page, pages) {
+        var numbers = [];
+        var buttons = $.fn.DataTable.ext.pager.numbers_length;
+        var half = Math.floor(buttons / 2);
+
+        var _range = function (len, start) {
+            var end;
+
+            if (typeof start === "undefined") {
+                start = 0;
+                end = len;
+            } else {
+                end = start;
+                start = len;
+            }
+            var out = [];
+            for (var i = start; i < end; i++) {
+                out.push(i);
+            }
+
+            return out;
+        };
+
+
+        if (pages <= buttons) {
+            numbers = _range(0, pages);
+
+        } else if (page <= half) {
+            numbers = _range(0, buttons);
+
+        } else if (page >= pages - 1 - half) {
+            numbers = _range(pages - buttons, pages);
+
+        } else {
+            numbers = _range(page - half, page + half + 1);
+        }
+
+        numbers.DT_el = 'span';
+        if (page == 0) {
+            return [numbers, "next", "last"];
+        } else if (page == 1) {
+            return ["previous", numbers, "next", "last"];
+        } else {
+            return ["first", "previous", numbers, "next", "last"];
+        }
+
+    };
+
+    $(document).ready(function () {
+        $.fn.dataTable.ext.pager.numbers_length = 5;
+
+        $("#member-table").DataTable({
+            "dom": '<"pull-left"f>i<"pull-right"l>tp',
+            // "bStateSave": true,
+            "lengthMenu": [10, 20, 30],
+            "filter": false,
+            "info": true,
+            "ordering": true,
+            "scrollX": true,
+            "scrollY": false,
+            "fixedHeader": false,
+            "scrollCollapse": true,
+            "autoWidth": false,
+            "pagingType": "numbers_no_ellipses",
+            "lengthChange": true,
+            "fixedColumns": {
+                "leftColumns": 6,
+                "heightMatch": "none"
+                // "terader-collapse" : "separate"
+            },
+            "language": {
+                "lengthMenu": "_MENU_",
+                "zeroRecords": "기간 내 데이터가 없습니다.",
+                "info": "total:_TOTAL_",
+                "infoEmpty": "total: 0",
+                "paginate": {
+                    "first": '<<',
+                    "last": '>>',
+                    "previous": "<",
+                    "next": ">"
+                }
+            }
+        })
+    });
+</script>
+<style>
+    table {
+        width: 100%;
+        margin: 0 auto;
+        clear: both;
+        border-collapse: collapse !important;
+        border-spacing: 0;
+    }
+
+    table td {
+        height: 40px !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length select {
+        width: 60px;
+    }
+
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+
+    .dataTables_paginate {
+        float: left !important;
+        margin-left: 530px !important;
+    }
+
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0px;
+        margin-left: 0px;
+        border: 0px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        border: 0px;
+    }
+
+    th {
+        white-space: nowrap;
+    }
+</style>
+</body>
+
+</html>
