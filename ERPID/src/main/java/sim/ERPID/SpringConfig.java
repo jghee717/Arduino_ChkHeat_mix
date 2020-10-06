@@ -5,9 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sim.ERPID.repository.*;
 import sim.ERPID.service.MemberService;
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 @Configuration
 public class SpringConfig {
 
