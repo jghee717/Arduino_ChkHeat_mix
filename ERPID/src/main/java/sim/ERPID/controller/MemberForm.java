@@ -1,5 +1,6 @@
 package sim.ERPID.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,9 @@ public class MemberForm {
     private String department;
     private String position;
     private String status;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date hire;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date resign;
 
     public String getName() {

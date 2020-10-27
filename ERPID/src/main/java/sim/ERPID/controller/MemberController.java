@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import sim.ERPID.domain.Member;
 import sim.ERPID.service.MemberService;
 
@@ -56,7 +54,7 @@ public class MemberController {
     }
 
 
-    @PostMapping(value = "/members/dd")
+    @PostMapping(value = "/members/regi")
     public String create2(MemberForm form) {
         Member member = new Member();
         member.setName(form.getName());
@@ -75,11 +73,11 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/members/dd")
+    @GetMapping("/members/regi")
     public String list2(Model model) {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
-        return "members/dd";
+        return "members/regi";
     }
 
 }

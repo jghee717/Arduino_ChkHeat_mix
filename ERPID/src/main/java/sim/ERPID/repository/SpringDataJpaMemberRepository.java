@@ -1,5 +1,6 @@
 package sim.ERPID.repository;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import sim.ERPID.domain.Member;
 
