@@ -22,7 +22,9 @@ public class MemberController {
     }
 
     @GetMapping(value = "/members/new")
-    public String createForm() {
+    public String createForm(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
         return "members/signup";
     }
 
@@ -43,7 +45,7 @@ public class MemberController {
         member.setHire(form.getHire());
         member.setResign(form.getResign());
         memberService.join(member);
-        return "redirect:/";
+        return "redirect";
     }
 
     @GetMapping("/members")
@@ -51,33 +53,6 @@ public class MemberController {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
         return "members/memberList";
-    }
-
-
-    @PostMapping(value = "/members/regi")
-    public String create2(MemberForm form) {
-        Member member = new Member();
-        member.setName(form.getName());
-        member.setNumber(form.getNumber());
-        member.setPw(form.getPw());
-        member.setEmail(form.getEmail());
-        member.setSex(form.getSex());
-        member.setAddress(form.getAddress());
-        member.setJumin(form.getJumin());
-        member.setDepartment(form.getDepartment());
-        member.setPosition(form.getPosition());
-        member.setStatus(form.getStatus());
-        member.setHire(form.getHire());
-        member.setResign(form.getResign());
-        memberService.join(member);
-        return "redirect:/";
-    }
-
-    @GetMapping("/members/regi")
-    public String list2(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/regi";
     }
 
 }
