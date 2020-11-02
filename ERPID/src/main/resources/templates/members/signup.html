@@ -57,8 +57,9 @@
                                     class="ti-dashboard"></i><span>인사 정보</span></a>
                             <ul class="collapse">
                                 <li class="active"><a href="/members/new">인사 정보 등록</a></li>
-                                <li><a href="/members">사원 테이블</a></li>
-                                <li><a href="index3.html">SEO dashboard</a></li>
+                                <li><a href="/members">근태 관리</a></li>
+                                <li><a href="">급여 관리</a></li>
+                                <li><a href="">인사/근태/급여기준 설정</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -287,6 +288,7 @@
                                         <th>입사일자</th>
                                         <th>이메일</th>
                                         <th>주소</th>
+                                        <th>체온</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -298,6 +300,7 @@
                                         <td th:text="${member.hire}"></td>
                                         <td th:text="${member.email}"></td>
                                         <td th:text="${member.address}"></td>
+                                        <td></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -316,14 +319,17 @@
                                     <h4 class="header-title mb-0">상세 정보</h4>
                                 </div>
                                 <div class="row">
+                                    <form method="post" action="upload" enctype="multipart/form-data">
                                     <div class="login-form-body col-md-3 mt-5 mb-3">
                                         <img class="card-img-top img-fluid" src="/images/card/card-img1.jpg"
                                              alt="image">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                            <input type="file" class="custom-file-input"name="reviewImg" id="reviewImageFileOpenInput" accept="image/png, image/jpeg">
+                                            <label class="custom-file-label" for="reviewImageFileOpenInput">Choose file</label>
+                                            <input type="submit">
                                         </div>
                                     </div>
+                                    </form>
                                     <div class="login-form-body col-md-5  mt-md-5 mb-3">
                                         <div class="form-gp">
                                             <label for="number">사원번호</label>
@@ -428,27 +434,24 @@
                                             <input class="form-control" type="date" value="" id="resign"
                                                    style="width: 50%">
                                         </div>
-                                    </div>
+                                        <br><br><br><br><br>
+                                        <div style="text-align:right!important" class="col-lg-6 submit-btn-area" >
 
-                                </div>
-                                <div class="submit-btn-area">
-                                    <button id="form_submit" type="submit" onclick="sub()">가입하기<i class="ti-arrow-right"></i></button>
+                                            <button id="form_submit" class="btn btn-flat btn-outline-dark mb-3" type="submit" onclick="sub()" >등 록<i class="ti-arrow-right"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
     <!-- main content area end -->
     <!-- footer area start-->
     <footer>
-        <div class="footer-area">
-            <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-        </div>
+
     </footer>
     <!-- footer area end-->
 </div>
@@ -684,6 +687,24 @@
     $('input[name=address]').map(function(){
         address_all +=$(this).val();
     });
+    //업로드
+    const elImage = document.querySelector("#reviewImageFileOpenInput");
+    elImage.addEventListener("change", (evt) => {
+        const image = evt.target.files[0];
+        if(!validImageType(image)) {
+            console.warn("invalide image file type");
+            return;
+        }
+    });
+
+    function valideImageType(image) {
+        const result = ([ 'image/jpeg',
+            'image/png',
+            'image/jpg' ].indexOf(image.type) > -1);
+        return result;
+        const elImage = document.querySelector(".thumb_img");
+        elImage.src = window.URL.createObjectURL(image);
+    }
 </script>
 
 <style>
