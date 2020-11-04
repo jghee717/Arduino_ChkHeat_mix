@@ -1,8 +1,10 @@
 package sim.ERPID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.multipart.MultipartResolver;
 import sim.ERPID.repository.*;
 import sim.ERPID.service.MemberService;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.EntityManager;
+import javax.servlet.MultipartConfigElement;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
@@ -34,11 +37,6 @@ public class SpringConfig {
 //// return new JdbcTemplateMemberRepository(dataSource);
 //        return new JpaMemberRepository(em);
 //    }
-    @Bean
-    public MultipartResolver multipartResolver() {
-        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(10485760); // 1024 * 1024 * 10
-        return multipartResolver;
-    }
+
 }
 
