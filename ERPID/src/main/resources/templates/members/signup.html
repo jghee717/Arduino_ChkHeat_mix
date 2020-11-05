@@ -456,10 +456,12 @@
 
         $("#member-table").DataTable({
             "dom": '<"pull-left"f>i<"pull-right"l>tp',
-            // "bStateSave": true,
-            "lengthMenu": false,
+            //"bStateSave": true,
+            "pageLength" : 5,
+            "lengthMenu": [ 5, 10, 20, 30 ],
             "filter": false,
             "info": true,
+            "searching": true,
             "ordering": true,
             "scrollX": true,
             "scrollY": false,
