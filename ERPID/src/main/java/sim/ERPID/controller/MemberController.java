@@ -56,4 +56,18 @@ public class MemberController {
         return "members/memberList";
     }
 
+
+    // 로그인 결과 페이지
+    @GetMapping("/loginSuccess")
+    public String dispLoginResult(Model model) {
+        return "/loginSuccess";
+    }
+
+    // 로그아웃 결과 페이지
+    @GetMapping("/logout/result")
+    public String dispLogout(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "/logout";
+    }
 }

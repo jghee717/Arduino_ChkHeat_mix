@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -42,7 +42,7 @@
 <div class="login-area login-s2">
     <div class="container">
         <div class="login-box ptb--100">
-            <form>
+            <form action="/" method="post">
                 <div class="login-form-head">
                     <h4>Sign In</h4>
                     <p>Hello there, Sign in and start managing your Admin Template</p>
@@ -72,6 +72,7 @@
                     </div>
                 </div>
             </form>
+            <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
         </div>
     </div>
 </div>
@@ -110,6 +111,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c5e8a858eebc10782f551651f1e142d8"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 package sim.ERPID.repository;
 
-import org.springframework.stereotype.Repository;
 import sim.ERPID.domain.Member;
 
 
