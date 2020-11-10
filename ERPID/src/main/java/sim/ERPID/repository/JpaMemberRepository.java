@@ -3,7 +3,7 @@ package sim.ERPID.repository;
 import sim.ERPID.domain.Member;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,7 +106,12 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
-
+    public Optional<Member> findByBodyheat(String bodyheat) {
+        List<Member> result = em.createQuery("select m from Member m where m.bodyheat = :bodyheat", Member.class)
+                .setParameter("bodyheat", bodyheat)
+                .getResultList();
+        return result.stream().findAny();
+    }
 
     @Override
     public Optional<Member> findByNumber(Integer number) {

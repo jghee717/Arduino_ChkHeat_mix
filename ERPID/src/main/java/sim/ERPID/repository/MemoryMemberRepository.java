@@ -3,7 +3,7 @@ package sim.ERPID.repository;
 import sim.ERPID.domain.Member;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository {
@@ -98,6 +98,13 @@ public class MemoryMemberRepository implements MemberRepository {
     public Optional<Member> findByResign(Date resign) {
         return store.values().stream()
                 .filter(member -> member.getAddress().equals(resign))
+                .findAny();
+    }
+
+    @Override
+    public Optional<Member> findByBodyheat(String bodyheat) {
+        return store.values().stream()
+                .filter(member -> member.getBodyheat().equals(bodyheat))
                 .findAny();
     }
 

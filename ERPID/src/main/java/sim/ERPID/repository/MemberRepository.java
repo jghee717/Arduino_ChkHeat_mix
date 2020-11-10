@@ -3,7 +3,7 @@ package sim.ERPID.repository;
 import sim.ERPID.domain.Member;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +22,6 @@ public interface MemberRepository {
     Optional<Member> findByStatus(String status);
     Optional<Member> findByHire(Date hire);
     Optional<Member> findByResign(Date resign);
-
+    Optional<Member> findByBodyheat(String bodyheat);
     List<Member> findAll();
 }

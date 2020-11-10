@@ -44,8 +44,9 @@ public class MemberController {
         member.setStatus(form.getStatus());
         member.setHire(form.getHire());
         member.setResign(form.getResign());
+        member.setBodyheat(form.getBodyheat());
         memberService.join(member);
-        return "redirect";
+        return "redirect:/members/new";
     }
 
 

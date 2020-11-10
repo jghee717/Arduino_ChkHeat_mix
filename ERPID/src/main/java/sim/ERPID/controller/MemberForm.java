@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 @Getter @Setter
@@ -19,10 +19,9 @@ public class MemberForm {
     private String department;
     private String position;
     private String status;
-    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date hire;
-    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date resign;
+    private String bodyheat;
 
     public String getName() {
         return name;
@@ -117,5 +116,13 @@ public class MemberForm {
 
     public void setResign(Date resign) {
         this.resign = resign;
+    }
+
+    public String getBodyheat() {
+        return bodyheat;
+    }
+
+    public void setBodyheat(String bodyheat) {
+        this.bodyheat = bodyheat;
     }
 }
