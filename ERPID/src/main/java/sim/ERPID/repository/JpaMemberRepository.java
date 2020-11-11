@@ -106,6 +106,7 @@ public class JpaMemberRepository implements MemberRepository {
                 .getResultList();
         return result.stream().findAny();
     }
+    @Override
     public Optional<Member> findByBodyheat(String bodyheat) {
         List<Member> result = em.createQuery("select m from Member m where m.bodyheat = :bodyheat", Member.class)
                 .setParameter("bodyheat", bodyheat)

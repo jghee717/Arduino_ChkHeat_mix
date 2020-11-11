@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -174,6 +175,35 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
+                            </div>
+                            <script type="text/javascript">
+                                function doExcelUploadProcess(){
+                                    var f = new FormData(document.getElementById('form1'));
+                                    $.ajax({
+                                        url: "uploadExcelFile",
+                                        data: f,
+                                        processData: false,
+                                        contentType: false,
+                                        type: "POST",
+                                        success: function(data){
+                                            console.log(data);
+                                            document.getElementById('result').innerHTML = JSON.stringify(data);
+                                        }
+                                    })
+                                }
+
+                                function doExcelDownloadProcess(){
+                                    var f = document.form1;
+                                    f.action = "downloadExcelFile";
+                                    f.submit();
+                                }
+                            </script>
+                            <form id="form1" name="form1" method="post" enctype="multipart/form-data">
+                                <input type="file" id="fileInput" name="fileInput">
+                                <button type="button" onclick="doExcelDownloadProcess()">엑셀다운로드 작업</button>
+                            </form>
+                            <div id="result">
                             </div>
                         </div>
                     </div>
@@ -184,7 +214,7 @@
                 <div class="col-12">
                     <div class="card" id="info" style="display: none">
                         <div class="card-body">
-                            <form action="/members/new" method="post" onsubmit="return sub()">
+                            <form action="/members/new" method="post">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">상세 정보</h4>
                                 </div>
@@ -255,7 +285,7 @@
                                             <label for="address1">주소</label>
                                             <div style="display: inline">
                                                 <input type="text" id="address1" name="address"
-                                                       style="bottom: 30px; width: 60%" value="">
+                                                       style="bottom: 30px; width: 60%" readonly>
                                                 <button type="button" class="btn btn-flat btn-outline-dark mb-3"
                                                         onclick="execDaumPostcode()">주소찾기
                                                 </button>
@@ -311,11 +341,16 @@
                                             <input class="form-control" type="date" value="" id="resign"
                                                    style="width: 50%">
                                         </div>
+                                        <div class="form-gp">
+                                            <label for="bodyheat">bodyheat</label>
+                                            <input type="text" name="bodyheat" id="bodyheat" style="width: 32%" hidden="hidden">
+                                            <div class="text-danger"></div>
+                                        </div>
                                         <br><br><br><br><br>
                                         <div style="text-align:right!important" class="col-lg-6 submit-btn-area">
 
                                             <button id="form_submit" class="btn btn-flat btn-outline-dark mb-3"
-                                                    type="submit" onclick="sub()">등 록<i class="ti-arrow-right"></i>
+                                                    type="submit">등 록<i class="ti-arrow-right"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -336,6 +371,12 @@
 
 <script>
     //주민등록번호 정규식
+    function doExcelDownloadProcess(){
+        var f = document.form1;
+        f.action = "downloadExcelFile";
+        f.submit();
+    }
+
     function setjumin(obj) {
         ju = obj.value;
         ju = ju.replace("-", "");

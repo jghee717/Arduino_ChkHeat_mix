@@ -29,6 +29,7 @@ public class MemberController {
     }
 
 
+
     @PostMapping(value = "/members/new")
     public String create(MemberForm form) {
         Member member = new Member();
