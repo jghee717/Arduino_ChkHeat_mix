@@ -164,7 +164,7 @@
                                     </thead>
                                     <tbody>
                                     <tr id="infotable" th:each="member : ${members}">
-                                        <td th:text="${member.number}"></td>
+                                        <td name="numid" id="numid" th:text="${member.number}"></td>
                                         <td th:text="${member.name}"></td>
                                         <td th:text="${member.position}"></td>
                                         <td th:text="${member.department}"></td>
@@ -234,12 +234,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="login-form-body col-md-5  mt-md-5 mb-3">
+                                    <div class="login-form-body col-md-5  mt-md-5 mb-3" th:each="member : ${members}">
                                         <div class="form-gp">
                                             <label for="number">사원번호</label>
                                             <input type="text" id="number" name="number" maxlength="8"
                                                    onkeypress="onlyNumber();"
-                                                   style="width: 30%">
+                                                   style="width: 30%" th:value="${member.number}">
                                             <div class="text-danger"></div>
                                         </div>
                                         <div class="form-gp">
@@ -361,6 +361,8 @@
                     </div>
                 </div>
             </div>
+            
+
 
         </div>
     </div>
