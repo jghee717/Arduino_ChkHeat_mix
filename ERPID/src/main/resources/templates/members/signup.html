@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>sim - 인사 정보 등록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.ico">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
@@ -27,7 +28,6 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -119,24 +119,24 @@
             <!-- market value area start -->
             <div class="row mt-5 mb-5">
                 <div class="col-12">
-<!--                    <div class="card">-->
-<!--                        <div class="card-body">-->
-<!--                            <div class="d-sm-flex align-items-center" id="search_box">-->
-<!--                                <h4 class="header-title mb-0">검색어</h4>&nbsp;-->
-<!--                                <div class="search-box pull-left">-->
-<!--                                    <form action="#">-->
-<!--                                        <select name="catgo" class="btn btn-flat btn-light dropdown-toggle" style="width: 20%">-->
-<!--                                            <option value="title">성 명</option>-->
-<!--                                            <option value="id">사원번호</option>-->
-<!--                                            <option value="address2">부서</option>-->
-<!--                                        </select>&nbsp;-->
-<!--                                        <input type="text" name="search" placeholder="Search..." required>-->
-<!--                                        <button style="color: white"><i class="ti-search"></i></button>-->
-<!--                                    </form>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="card">-->
+                    <!--                        <div class="card-body">-->
+                    <!--                            <div class="d-sm-flex align-items-center" id="search_box">-->
+                    <!--                                <h4 class="header-title mb-0">검색어</h4>&nbsp;-->
+                    <!--                                <div class="search-box pull-left">-->
+                    <!--                                    <form action="#">-->
+                    <!--                                        <select name="catgo" class="btn btn-flat btn-light dropdown-toggle" style="width: 20%">-->
+                    <!--                                            <option value="title">성 명</option>-->
+                    <!--                                            <option value="id">사원번호</option>-->
+                    <!--                                            <option value="address2">부서</option>-->
+                    <!--                                        </select>&nbsp;-->
+                    <!--                                        <input type="text" name="search" placeholder="Search..." required>-->
+                    <!--                                        <button style="color: white"><i class="ti-search"></i></button>-->
+                    <!--                                    </form>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <br>
                     <div class="card">
 
@@ -163,7 +163,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="member : ${members}">
+                                    <tr id="infotable" th:each="member : ${members}" onclick="regi2()">
                                         <td th:text="${member.number}"></td>
                                         <td th:text="${member.name}"></td>
                                         <td th:text="${member.position}"></td>
@@ -175,10 +175,48 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="col-lg-12" id="ex2_Result1" ></div>
+                                <div class="col-lg-12" id="ex2_Result2" ></div>
+                                <div class="row">
+                                    <table id="example-table-2" width="100%" class="table table-bordered table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>No. </th>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>이메일</th>
+                                            <th>버튼</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr onclick="regi2()">
+                                            <td>1</td>
+                                            <td>user04</td>
+                                            <td>맥크리</td>
+                                            <td>sunset@gmail.com</td>
+                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>user05</td>
+                                            <td>메르시</td>
+                                            <td>Mercy@naver.com</td>
+                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>user06</td>
+                                            <td>한조</td>
+                                            <td>trolling@gmail.com</td>
+                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
                             </div>
                             <script type="text/javascript">
-                                function doExcelUploadProcess(){
+                                function doExcelUploadProcess() {
                                     var f = new FormData(document.getElementById('form1'));
                                     $.ajax({
                                         url: "uploadExcelFile",
@@ -186,14 +224,14 @@
                                         processData: false,
                                         contentType: false,
                                         type: "POST",
-                                        success: function(data){
+                                        success: function (data) {
                                             console.log(data);
                                             document.getElementById('result').innerHTML = JSON.stringify(data);
                                         }
                                     })
                                 }
 
-                                function doExcelDownloadProcess(){
+                                function doExcelDownloadProcess() {
                                     var f = document.form1;
                                     f.action = "downloadExcelFile";
                                     f.submit();
@@ -206,6 +244,7 @@
                             <div id="result">
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -214,7 +253,7 @@
                 <div class="col-12">
                     <div class="card" id="info" style="display: none">
                         <div class="card-body">
-                            <form action="/members/new" method="post">
+                            <form action="/members/new" method="post"  onsubmit="return white()">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">상세 정보</h4>
                                 </div>
@@ -333,17 +372,17 @@
                                         <div><br>
                                             <label for="hire"
                                                    class="col-form-label">입사일자</label>
-                                            <input class="form-control" type="date" value="2020-09-08" id="hire"
+                                            <input class="form-control" type="date" name="hire" id="hire"
                                                    style="width: 50%">
                                         </div>
                                         <div style="bottom: 20px">
                                             <label for="resign" class="col-form-label">퇴사일자</label>
-                                            <input class="form-control" type="date" value="" id="resign"
+                                            <input class="form-control" type="date" name="resign" id="resign"
                                                    style="width: 50%">
                                         </div>
                                         <div class="form-gp">
-                                            <label for="bodyheat">bodyheat</label>
-                                            <input type="text" name="bodyheat" id="bodyheat" style="width: 32%" hidden="hidden">
+                                            <input type="text" name="bodyheat" id="bodyheat" style="width: 32%"
+                                                   hidden="hidden">
                                             <div class="text-danger"></div>
                                         </div>
                                         <br><br><br><br><br>
@@ -360,6 +399,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!-- main content area end -->
@@ -370,12 +410,24 @@
 <!-- offset area start -->
 
 <script>
-    //주민등록번호 정규식
-    function doExcelDownloadProcess(){
-        var f = document.form1;
-        f.action = "downloadExcelFile";
-        f.submit();
-    }
+
+    //파일업로드
+    var formData = new FormData($("#formId")[0]);
+    $.ajax({
+        type: 'post',
+        url: "/excelupload",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (html) {
+            alert("파일 업로드를 성공하였습니다.");
+        },
+        error: function (error) {
+            alert("파일 업로드에 실패하였습니다.");
+            console.log(error);
+            console.log(error.status);
+        }
+    });
 
     function setjumin(obj) {
         ju = obj.value;
@@ -409,6 +461,7 @@
 </style>
 <!-- offset area end -->
 <!-- jquery latest version -->
+<script src="/js/datepicker.js"></script>
 <script src="/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/js/popper.min.js"></script>
@@ -498,8 +551,8 @@
         $("#member-table").DataTable({
             "dom": '<"pull-left"f>i<"pull-right"l>tp',
             //"bStateSave": true,
-            "pageLength" : 5,
-            "lengthMenu": [ 5, 10, 20, 30 ],
+            "pageLength": 5,
+            "lengthMenu": [5, 10, 20, 30],
             "filter": false,
             "info": true,
             "searching": true,
@@ -531,14 +584,118 @@
         })
     });
 
-    $("info").click(function () {
-        if (open_del == -1) {
-            table.columns([13]).visible(true);
-            open_del *= -1;
-        } else {
-            table.columns([13]).visible(false);
-            open_del *= -1;
+    //빈칸 정규
+    function white() {
+        var idw= document.getElementById("number").value;
+        if(idw==""){
+            alert("사원번호를 입력해주세요");
+            document.getElementById('number').focus();
+            return false;
         }
+        var pww= document.getElementById("pw").value;
+        if(pww==""){
+            alert("비밀번호를 입력해주세요");
+            document.getElementById('pw').focus();
+            return false;
+        }
+        var pwwc= document.getElementById("jumin").value;
+        if(pwwc==""){
+            alert("주민등록번호를 입력해주세요");
+            document.getElementById('jumin').focus();
+            return false;
+        }
+        var namew= document.getElementById("name").value;
+        if(namew==""){
+            alert("이름을 입력해주세요");
+            document.getElementById('name').focus();
+            return false;
+        }
+        var emailw= document.getElementById("email").value;
+        if(emailw==""){
+            alert("이메일을 입력해주세요");
+            document.getElementById('email').focus();
+            return false;
+        }
+        var phonew= document.getElementById("sex").value;
+        if(phonew==""){
+            alert("성별을 선택해주세요");
+            document.getElementById('sex').focus();
+            return false;
+        }
+        var birthw= document.getElementById("address").value;
+        if(birthw==""){
+            alert("주소를 입력해주세요");
+            document.getElementById('address').focus();
+            return false;
+        }
+        var birthww= document.getElementById("address2").value;
+        if(birthww==""){
+            alert("주소를 입력해주세요");
+            document.getElementById('address2').focus();
+            return false;
+        }
+        var birthwww= document.getElementById("department").value;
+        if(birthwww=="hid"){
+            alert("부서를 선택해주세요");
+            document.getElementById('department').focus();
+            return false;
+        }
+        var addressw= document.getElementById("position").value;
+        if(addressw=="hidpo"){
+            alert("직위를 선택해주세요");
+            document.getElementById('position').focus();
+            return false;
+        }
+        var addressw2= document.getElementById("status").value;
+        if(addressw2=="hidst"){
+            alert("직위를 선택해주세요");
+            document.getElementById('status').focus();
+            return false;
+        }
+        var hir= document.getElementById("hire").value;
+        if(hir==""){
+            alert("입사일자를 입력해주세요");
+            document.getElementById('hire').focus();
+            return false;
+        }
+    }
+
+    //row값 클릭 시 상세정보
+    window.onload= $(".checkBtn").click(function(){
+
+
+        var str = ""
+        var tdArr = new Array();    // 배열 선언
+        var checkBtn = $(this);
+
+        // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+        // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+        var tr = checkBtn.parent().parent();
+        var td = tr.children();
+
+        console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+
+        var no = td.eq(0).text();
+        var userid = td.eq(1).text();
+        var name = td.eq(2).text();
+        var email = td.eq(3).text();
+
+
+        // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+        td.each(function(i){
+            tdArr.push(td.eq(i).text());
+        });
+
+        console.log("배열에 담긴 값 : "+tdArr);
+
+
+        str +=    " * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
+            ", 아이디 : <font color='red'>" + userid + "</font>" +
+            ", 이름 : <font color='red'>" + name + "</font>" +
+            ", 이메일 : <font color='red'>" + email + "</font>";
+
+        $("#ex2_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
+        $("#ex2_Result2").html(str);
     });
 
     function regi() {
