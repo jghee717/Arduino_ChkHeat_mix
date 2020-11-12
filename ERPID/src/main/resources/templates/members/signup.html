@@ -163,7 +163,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr id="infotable" th:each="member : ${members}" onclick="regi2()">
+                                    <tr id="infotable" th:each="member : ${members}">
                                         <td th:text="${member.number}"></td>
                                         <td th:text="${member.name}"></td>
                                         <td th:text="${member.position}"></td>
@@ -175,46 +175,8 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div class="col-lg-12" id="ex2_Result1" ></div>
-                                <div class="col-lg-12" id="ex2_Result2" ></div>
-                                <div class="row">
-                                    <table id="example-table-2" width="100%" class="table table-bordered table-hover text-center">
-                                        <thead>
-                                        <tr>
-                                            <th>No. </th>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>이메일</th>
-                                            <th>버튼</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr onclick="regi2()">
-                                            <td>1</td>
-                                            <td>user04</td>
-                                            <td>맥크리</td>
-                                            <td>sunset@gmail.com</td>
-                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>user05</td>
-                                            <td>메르시</td>
-                                            <td>Mercy@naver.com</td>
-                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>user06</td>
-                                            <td>한조</td>
-                                            <td>trolling@gmail.com</td>
-                                            <td><input type="button" class="checkBtn" value="클릭" /></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                                 <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
-                            </div>
+                            </div>s
                             <script type="text/javascript">
                                 function doExcelUploadProcess() {
                                     var f = new FormData(document.getElementById('form1'));
@@ -378,7 +340,7 @@
                                         <div style="bottom: 20px">
                                             <label for="resign" class="col-form-label">퇴사일자</label>
                                             <input class="form-control" type="date" name="resign" id="resign"
-                                                   style="width: 50%">
+                                                   style="width: 50%" >
                                         </div>
                                         <div class="form-gp">
                                             <input type="text" name="bodyheat" id="bodyheat" style="width: 32%"
@@ -661,25 +623,18 @@
     }
 
     //row값 클릭 시 상세정보
-    window.onload= $(".checkBtn").click(function(){
-
+    window.onload= $("#example-table-1").click(function(){
 
         var str = ""
-        var tdArr = new Array();    // 배열 선언
-        var checkBtn = $(this);
 
-        // checkBtn.parent() : checkBtn의 부모는 <td>이다.
-        // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
-        var tr = checkBtn.parent().parent();
+        var tdArr = new Array();    // 배열 선언
+
+        // 현재 클릭된 Row(<tr>)
+        var tr = $(this);
         var td = tr.children();
 
+        // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
         console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-
-        var no = td.eq(0).text();
-        var userid = td.eq(1).text();
-        var name = td.eq(2).text();
-        var email = td.eq(3).text();
-
 
         // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
         td.each(function(i){
@@ -688,15 +643,26 @@
 
         console.log("배열에 담긴 값 : "+tdArr);
 
+        // td.eq(index)를 통해 값을 가져올 수도 있다.
+        var no = td.eq(0).text();
+        var userid = td.eq(1).text();
+        var name = td.eq(2).text();
+        var email = td.eq(3).text();
 
-        str +=    " * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
+
+            str +=    " * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
             ", 아이디 : <font color='red'>" + userid + "</font>" +
             ", 이름 : <font color='red'>" + name + "</font>" +
             ", 이메일 : <font color='red'>" + email + "</font>";
 
-        $("#ex2_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
-        $("#ex2_Result2").html(str);
+        $("#ex1_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
+        $("#ex1_Result2").html(str);
+        $('#number').val(no);
+        $('#name').val(name);
+        $('#email').val(email);
+        $('#address').val(userid);
     });
+
 
     function regi() {
         var x = document.getElementById("info");
