@@ -1,41 +1,34 @@
 package sim.ERPID.Excel;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.sql.Date;
+
+
 public class Customer {
-    private String firstName;
-    private String lastName;
-    private String mobileNumber;
-    private String email;
-    public Customer(String firstName, String lastName, String mobileNumber, String email) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
+        private String name;
+        private String number;
+        private String address;
+        private String department;
+        private String position;
+        private String hire;
+        private String email;
+
+    public Customer(String number, String name, String position, String department, String hire, String email,String address) {
+        this.number = number;
+        this.name = name;
+        this.position = position;
+        this.department = department;
+        this.hire = hire;
+        this.email=email;
+        this.address = address;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
 
     public String getEmail() {
         return email;
@@ -44,5 +37,57 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+        public String getName() {
+            return name;
+        }
 
-}
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+
+
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getDepartment() {
+            return department;
+        }
+
+        public void setDepartment(String department) {
+            this.department = department;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public void setPosition(String position) {
+            this.position = position;
+        }
+
+
+        public String getHire() {
+            return hire;
+        }
+
+        public void setHire(String hire) {
+            this.hire = hire;
+        }
+
+
+    }

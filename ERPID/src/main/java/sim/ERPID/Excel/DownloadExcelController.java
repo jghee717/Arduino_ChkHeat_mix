@@ -19,7 +19,7 @@ public class DownloadExcelController {
         return "index";
     }
 
-    @GetMapping("/download/customers.xlsx")
+    @GetMapping("/download/hrms.xlsx")
     public  void downloadExcelFile(HttpServletResponse response) throws IOException {
 
         response.setContentType("application/octet-stream");
@@ -29,11 +29,8 @@ public class DownloadExcelController {
     }
     private List<Customer> createTestData() {
         List<Customer> customers = new ArrayList<Customer>();
-        customers.add(new Customer("Vernon", "Barlow", "0123456789", "test1@simplesolution.dev"));
-        customers.add(new Customer("Maud", "Brock", "0123456788", "test2@simplesolution.dev"));
-        customers.add(new Customer("Chyna", "Cowan", "0123456787", "test3@simplesolution.dev"));
-        customers.add(new Customer("Krisha", "Tierney", "0123456786", "test4@simplesolution.dev"));
-        customers.add(new Customer("Sherry", "Rosas", "0123456785", "test5@simplesolution.dev"));
+        customers.add(new Customer("23423","심성윤","차장","개발","2020-09-10","jghee717@hrms.com","서울 강남구 양재천로 167 (도곡동),1002"));
+        customers.add(new Customer("99109","신현준","부장","개발","2020-04-11","sinhj@hrms.com","서울 강남구 양재천로 167 (도곡동),2201"));
         return customers;
     }
 }

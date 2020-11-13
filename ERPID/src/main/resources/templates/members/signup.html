@@ -177,7 +177,7 @@
                                 </table>
                                 <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
                             </div>
-                            <a href="http://localhost:8080/download/customers.xlsx" class="btn btn-primary">Download</a>
+                            <a href="http://localhost:8080/download/hrms.xlsx" class="btn btn-primary">Download</a>
                             <div id="result">
                             </div>
                         </div>
@@ -283,7 +283,7 @@
                                         </div>
                                         <br><br>
                                         <div class="form-gp" style="display: inline">
-                                            <label for="position">직위</label>
+                                            <label for="position">직책</label>
                                             <select id="position" name="position" value="hidpo"
                                                     class="btn btn-flat btn-light dropdown-toggle" style="width:120px;">
                                                 <option value="hidpo" hidden="hidden"></option>
@@ -581,13 +581,13 @@
         }
         var addressw= document.getElementById("position").value;
         if(addressw=="hidpo"){
-            alert("직위를 선택해주세요");
+            alert("직책를 선택해주세요");
             document.getElementById('position').focus();
             return false;
         }
         var addressw2= document.getElementById("status").value;
         if(addressw2=="hidst"){
-            alert("직위를 선택해주세요");
+            alert("직책를 선택해주세요");
             document.getElementById('status').focus();
             return false;
         }
