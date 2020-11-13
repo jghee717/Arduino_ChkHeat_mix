@@ -234,12 +234,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="login-form-body col-md-5  mt-md-5 mb-3" th:each="member : ${members}">
+                                    <div class="login-form-body col-md-5  mt-md-5 mb-3">
                                         <div class="form-gp">
                                             <label for="number">사원번호</label>
                                             <input type="text" id="number" name="number" maxlength="8"
                                                    onkeypress="onlyNumber();"
-                                                   style="width: 30%" th:value="${member.number}">
+                                                   style="width: 30%">
                                             <div class="text-danger"></div>
                                         </div>
                                         <div class="form-gp">
