@@ -176,33 +176,8 @@
                                     </tbody>
                                 </table>
                                 <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
-                            </div>s
-                            <script type="text/javascript">
-                                function doExcelUploadProcess() {
-                                    var f = new FormData(document.getElementById('form1'));
-                                    $.ajax({
-                                        url: "uploadExcelFile",
-                                        data: f,
-                                        processData: false,
-                                        contentType: false,
-                                        type: "POST",
-                                        success: function (data) {
-                                            console.log(data);
-                                            document.getElementById('result').innerHTML = JSON.stringify(data);
-                                        }
-                                    })
-                                }
-
-                                function doExcelDownloadProcess() {
-                                    var f = document.form1;
-                                    f.action = "downloadExcelFile";
-                                    f.submit();
-                                }
-                            </script>
-                            <form id="form1" name="form1" method="post" enctype="multipart/form-data">
-                                <input type="file" id="fileInput" name="fileInput">
-                                <button type="button" onclick="doExcelDownloadProcess()">엑셀다운로드 작업</button>
-                            </form>
+                            </div>
+                            <a href="http://localhost:8080/download/customers.xlsx" class="btn btn-primary">Download</a>
                             <div id="result">
                             </div>
                         </div>

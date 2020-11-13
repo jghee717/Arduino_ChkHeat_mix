@@ -19,14 +19,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
+
+    compile group : 'org.apache.poi', name: 'poi', version: '4.0.1'
+    compile group : 'org.apache.poi', name: 'poi-ooxml', version: '4.0.1'
+    compile group : 'commons-io', name: 'commons-io', version: '2.6'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    compile group: 'commons-io', name: 'commons-io', version: '2.6'
-    compile ('org.apache.poi:poi:3.7')
-    compile ('org.apache.poi:poi-ooxml:3.7')
 }
 
 
