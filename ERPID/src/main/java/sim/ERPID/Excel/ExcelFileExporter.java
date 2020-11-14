@@ -3,6 +3,7 @@ package sim.ERPID.Excel;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.VerticalAlign;
 import sim.ERPID.domain.Member;
@@ -18,13 +19,14 @@ public class ExcelFileExporter {
         try(Workbook workbook = new XSSFWorkbook()){
 
             Sheet sheet = workbook.createSheet("사원 정보");
-
+            XSSFFont Font = (XSSFFont) workbook.createFont();
             Row row = sheet.createRow(0);
             CellStyle headerCellStyle = workbook.createCellStyle();
             headerCellStyle.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_25_PERCENT.getIndex());
             headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerCellStyle.setBorderBottom(BorderStyle.THIN);
+            Font.setBold(true);
 
-            CellStyle styleOfBoardFillFontBlackBold16 = workbook.createCellStyle();
 
 
             //create header cell
@@ -60,6 +62,7 @@ public class ExcelFileExporter {
             //create date row for eache of customer object
             for(int i =0; i<customers.size(); i++){
                 Row dataRow = sheet.createRow(i + 1); //plus one header row
+
                 dataRow.createCell(0).setCellValue(customers.get(i).getNumber());
                 dataRow.createCell(1).setCellValue(customers.get(i).getName());
                 dataRow.createCell(2).setCellValue(customers.get(i).getPosition());
@@ -67,17 +70,17 @@ public class ExcelFileExporter {
                 dataRow.createCell(4).setCellValue(customers.get(i).getHire());
                 dataRow.createCell(5).setCellValue(customers.get(i).getEmail());
                 dataRow.createCell(6).setCellValue(customers.get(i).getAddress());
+
             }
 
             //Making sure the size of excel cell auto resize to fit the data
-            sheet.setColumnWidth(0, (sheet.getColumnWidth(0))+1000);
+            sheet.setColumnWidth(0, (sheet.getColumnWidth(0))+800);
             sheet.setColumnWidth(1, (sheet.getColumnWidth(1))+1000);
             sheet.setColumnWidth(2, (sheet.getColumnWidth(2))+1000);
             sheet.setColumnWidth(3, (sheet.getColumnWidth(3))+1000);
             sheet.setColumnWidth(4, (sheet.getColumnWidth(4))+2500);
             sheet.setColumnWidth(5, (sheet.getColumnWidth(5))+4000);
             sheet.setColumnWidth(6, (sheet.getColumnWidth(6))+10000);
-
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);

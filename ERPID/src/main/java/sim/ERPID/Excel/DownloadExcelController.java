@@ -3,10 +3,14 @@ package sim.ERPID.Excel;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,7 @@ public class DownloadExcelController {
     public  void downloadExcelFile(HttpServletResponse response) throws IOException {
 
         response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment; filename=hrms.xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=hrms 사원 정보.xlsx");
         ByteArrayInputStream stream = ExcelFileExporter.exportCustomerListToExcelFile(createTestData());
         IOUtils.copy(stream, response.getOutputStream());
     }
@@ -33,4 +37,5 @@ public class DownloadExcelController {
         customers.add(new Customer("99109","신현준","부장","개발","2020-04-11","sinhj@hrms.com","서울 강남구 양재천로 167 (도곡동),2201"));
         return customers;
     }
+
 }
