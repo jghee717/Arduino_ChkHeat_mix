@@ -23,7 +23,7 @@ public class DownloadExcelController {
     public  void downloadExcelFile(HttpServletResponse response) throws IOException {
 
         response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment; filename=customers.xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=hrms.xlsx");
         ByteArrayInputStream stream = ExcelFileExporter.exportCustomerListToExcelFile(createTestData());
         IOUtils.copy(stream, response.getOutputStream());
     }

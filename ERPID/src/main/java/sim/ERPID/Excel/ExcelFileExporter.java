@@ -1,7 +1,10 @@
 package sim.ERPID.Excel;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.VerticalAlign;
 import sim.ERPID.domain.Member;
 
 import java.io.ByteArrayInputStream;
@@ -18,16 +21,20 @@ public class ExcelFileExporter {
 
             Row row = sheet.createRow(0);
             CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_25_PERCENT.getIndex());
+            headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+
+            CellStyle styleOfBoardFillFontBlackBold16 = workbook.createCellStyle();
 
 
             //create header cell
             Cell cell = row.createCell(0);
-            cell.setCellValue("사원 번호");
             cell.setCellStyle(headerCellStyle);
+            cell.setCellValue("사원 번호");
 
             cell = row.createCell(1);
-            cell.setCellValue("이름");
             cell.setCellStyle(headerCellStyle);
+            cell.setCellValue("이름");
 
             cell =row.createCell(2);
             cell.setCellValue("직책");
@@ -63,13 +70,13 @@ public class ExcelFileExporter {
             }
 
             //Making sure the size of excel cell auto resize to fit the data
-            sheet.autoSizeColumn(0);
-            sheet.autoSizeColumn(1);
-            sheet.autoSizeColumn(2);
-            sheet.autoSizeColumn(3);
-            sheet.autoSizeColumn(4);
-            sheet.autoSizeColumn(5);
-            sheet.setColumnWidth(6, (sheet.getColumnWidth(6))+1024);
+            sheet.setColumnWidth(0, (sheet.getColumnWidth(0))+1000);
+            sheet.setColumnWidth(1, (sheet.getColumnWidth(1))+1000);
+            sheet.setColumnWidth(2, (sheet.getColumnWidth(2))+1000);
+            sheet.setColumnWidth(3, (sheet.getColumnWidth(3))+1000);
+            sheet.setColumnWidth(4, (sheet.getColumnWidth(4))+2500);
+            sheet.setColumnWidth(5, (sheet.getColumnWidth(5))+4000);
+            sheet.setColumnWidth(6, (sheet.getColumnWidth(6))+10000);
 
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
