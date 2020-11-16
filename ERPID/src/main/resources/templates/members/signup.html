@@ -46,7 +46,7 @@
     <div class="sidebar-menu">
         <div class="sidebar-header">
             <div class="logo">
-                <a href="/"><img src="/images/icon/logo2.png" alt="logo"></a>
+                <a><img src="/images/icon/logo2.png" alt="logo"></a>
             </div>
         </div>
         <div class="main-menu">
@@ -97,10 +97,10 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
+                        <br>
                         <h4 class="page-title pull-left">인사 정보</h4>
                         <ul class="breadcrumbs pull-left">
-                            <li><a href="/">인사 정보</a></li>
-                            <li><span>인사 정보 등록</span></li>
+
                             <br>
                         </ul>
                     </div>
@@ -520,6 +520,16 @@
             document.getElementById('number').focus();
             return false;
         }
+        if(idw=="23423"){
+            alert("존재하는 사원번호입니다");
+            document.getElementById('number').focus();
+            return false;
+        }
+        if(idw=="99109"){
+            alert("존재하는 사원번호입니다");
+            document.getElementById('number').focus();
+            return false;
+        }
         var pww= document.getElementById("pw").value;
         if(pww==""){
             alert("비밀번호를 입력해주세요");
@@ -550,18 +560,7 @@
             document.getElementById('sex').focus();
             return false;
         }
-        var birthw= document.getElementById("address").value;
-        if(birthw==""){
-            alert("주소를 입력해주세요");
-            document.getElementById('address').focus();
-            return false;
-        }
-        var birthww= document.getElementById("address2").value;
-        if(birthww==""){
-            alert("주소를 입력해주세요");
-            document.getElementById('address2').focus();
-            return false;
-        }
+
         var birthwww= document.getElementById("department").value;
         if(birthwww=="hid"){
             alert("부서를 선택해주세요");
