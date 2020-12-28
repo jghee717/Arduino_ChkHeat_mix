@@ -18,8 +18,9 @@ public class Customer {
         private String position;
         private String hire;
         private String email;
+        private String bodyheat;
 
-    public Customer(String number, String name, String position, String department, String hire, String email,String address) {
+    public Customer(String number, String name, String position, String department, String hire, String email,String address,String bodyheat) {
         this.number = number;
         this.name = name;
         this.position = position;
@@ -27,6 +28,7 @@ public class Customer {
         this.hire = hire;
         this.email=email;
         this.address = address;
+        this.bodyheat = bodyheat;
     }
 
 
@@ -90,4 +92,11 @@ public class Customer {
         }
 
 
+    public String getBodyheat() {
+        return bodyheat;
     }
+
+    public void setBodyheat(String bodyheat) {
+        this.bodyheat = bodyheat;
+    }
+}

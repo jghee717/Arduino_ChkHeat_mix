@@ -1,11 +1,12 @@
-<!DOCTYPE HTML>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:text-align="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - 사원목록</title>
+    <title>sim - 인사 정보 등록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.ico">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
@@ -29,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 </head>
 
-<body class="body-bg">
+<body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -39,688 +40,732 @@
     <div class="loader"></div>
 </div>
 <!-- preloader area end -->
-<!-- main wrapper start -->
-<div class="horizontal-main-wrapper">
-    <!-- main header area start -->
-    <div class="mainheader-area">
-        <div class="container">
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a><img src="/images/icon/logo2.png" alt="logo"></a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li class="active">
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-dashboard"></i><span>인사 정보</span></a>
+                            <ul class="collapse">
+                                <li class="active"><a href="/members/new">인사 정보 등록</a></li>
+                                <li class="active"><a href="/members">회원 상세 정보</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- 사이드 바 메뉴 -->
+
+    <!-- 서치창~ 설정버튼  -->
+    <div class="main-content">
+        <!-- header area start -->
+        <div class="header-area">
             <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="/"><img src="/images/icon/logo2.png" alt="logo"></a>
+                <!-- nav and search button -->
+                <div class="col-md-6 col-sm-8 clearfix">
+                    <div class="nav-btn pull-left">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
                 <!-- profile info & task notification -->
-                <div class="col-md-9 clearfix text-right">
-                    <div class="d-md-inline-block d-block mr-md-4">
-                        <ul class="notification-area">
-                            <li id="full-view"><i class="ti-fullscreen"></i></li>
-                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-                            <li class="dropdown">
-                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                    <span>2</span>
-                                </i>
-                                <div class="dropdown-menu bell-notify-box notify-box">
-                                    <span class="notify-title">You have 3 new notifications <a
-                                            href="#">view all</a></span>
-                                    <div class="nofity-list">
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                            <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                            <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
-                                <div class="dropdown-menu notify-box nt-enveloper-box">
-                                    <span class="notify-title">You have 3 new notifications <a
-                                            href="#">view all</a></span>
-                                    <div class="nofity-list">
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img1.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Hey I am waiting for you...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img2.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">When you can connect with me...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img3.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">I missed you so much...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img4.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Your product is completely Ready...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img2.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Hey I am waiting for you...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img1.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Hey I am waiting for you...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="/images/author/author-img3.jpg" alt="image">
-                                            </div>
-                                            <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Hey I am waiting for you...</span>
-                                                <span>3:15 PM</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="settings-btn">
-                                <i class="ti-settings"></i>
-                            </li>
+                <div class="col-md-6 col-sm-4 clearfix">
+                    <ul class="notification-area pull-right">
+                        <li id="full-view"><i class="ti-fullscreen"></i></li>
+                        <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /서치창~ 설정버튼 -->
+
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">회원 상세 정보</h4>
+                        <br>
+                        <ul class="breadcrumbs pull-left">
                         </ul>
                     </div>
-                    <div class="clearfix d-md-inline-block d-block">
-                        <div class="user-profile m-0">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Sim-Hrms <i
-                                    class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="/members/new">인사 정보 등록</a>
-                                <a class="dropdown-item" href="/members">사원 목록</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+                <div class="col-sm-6 clearfix">
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <!-- market value area start -->
+            <div class="row mt-5 mb-5">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="single-table">
+                                <table id="member-table" name="member-table"
+                                       class="data-tables row-border order-column text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>사원번호</th>
+                                        <th>이름</th>
+                                        <th>직책</th>
+                                        <th>부서</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="infotable" th:each="member : ${members}">
+                                        <td name="numid" id="numid" th:text="${member.number}"></td>
+                                        <td th:text="${member.name}"></td>
+                                        <td th:text="${member.position}"></td>
+                                        <td th:text="${member.department}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- main header area end -->
-    <!-- header area start -->
-    <div class="header-area header-bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-9  d-none d-lg-block">
-                    <div class="horizontal-menu">
-                        <nav>
-                            <ul id="nav_menu">
-                                <li>
-                                    <a href="javascript:void(0)"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="index.html">ICO dashboard</a></li>
-                                        <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                        <li><a href="index3.html">SEO dashboard</a></li>
-                                    </ul>
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body ">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#able" role="tab"
+                                       aria-controls="able" aria-selected="true">인적사항</a>
                                 </li>
-                                <li class="active">
-                                    <a href="javascript:void(0)"><i class="ti-layout-sidebar-left"></i><span>Sidebar
-                                                Types</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="index.html">Left Sidebar</a></li>
-                                        <li class="active"><a href="index3-horizontalmenu.html">Horizontal Sidebar</a>
-                                        </li>
-                                    </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#able2" role="tab"
+                                       aria-controls="able2" aria-selected="false">경력정보</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="ti-pie-chart"></i><span>Charts</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="barchart.html">bar chart</a></li>
-                                        <li><a href="linechart.html">line Chart</a></li>
-                                        <li><a href="piechart.html">pie chart</a></li>
-                                    </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#able3" role="tab"
+                                       aria-controls="able3" aria-selected="false">자격증</a>
                                 </li>
-                                <li class="mega-menu">
-                                    <a href="javascript:void(0)"><i class="ti-palette"></i><span>UI Features</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="accordion.html">Accordion</a></li>
-                                        <li><a href="alert.html">Alert</a></li>
-                                        <li><a href="badge.html">Badge</a></li>
-                                        <li><a href="button.html">Button</a></li>
-                                        <li><a href="button-group.html">Button Group</a></li>
-                                        <li><a href="cards.html">Cards</a></li>
-                                        <li><a href="dropdown.html">Dropdown</a></li>
-                                        <li><a href="list-group.html">List Group</a></li>
-                                        <li><a href="media-object.html">Media Object</a></li>
-                                        <li><a href="modal.html">Modal</a></li>
-                                        <li><a href="pagination.html">Pagination</a></li>
-                                        <li><a href="popovers.html">Popover</a></li>
-                                        <li><a href="progressbar.html">Progressbar</a></li>
-                                        <li><a href="tab.html">Tab</a></li>
-                                        <li><a href="typography.html">Typography</a></li>
-                                        <li><a href="form.html">Form</a></li>
-                                        <li><a href="grid.html">grid system</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mega-menu">
-                                    <a href="javascript:void(0)"><i class="ti-layers-alt"></i> <span>Pages</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="login2.html">Login 2</a></li>
-                                        <li><a href="login3.html">Login 3</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="register2.html">Register 2</a></li>
-                                        <li><a href="register3.html">Register 3</a></li>
-                                        <li><a href="register4.html">Register 4</a></li>
-                                        <li><a href="screenlock.html">Lock Screen</a></li>
-                                        <li><a href="screenlock2.html">Lock Screen 2</a></li>
-                                        <li><a href="reset-pass.html">reset password</a></li>
-                                        <li><a href="pricing.html">Pricing</a></li>
-                                        <li><a href="404.html">Error 404</a></li>
-                                        <li><a href="500.html">Error 500</a></li>
-                                        <li><a href="invoice.html"><i class="ti-receipt"></i>
-                                            <span>Invoice Summary</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="ti-slice"></i><span>icons</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="fontawesome.html">fontawesome icons</a></li>
-                                        <li><a href="themify.html">themify icons</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-table"></i>
-                                        <span>Tables</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="table-basic.html">basic table</a></li>
-                                        <li><a href="table-layout.html">table layout</a></li>
-                                        <li><a href="datatable.html">datatable</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                             </ul>
-                        </nav>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <div class="tab-pane fade show active" id="able" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <form action="/members/new" method="post" onsubmit="return white()">
+                                        <div class="row">
+
+                                            <div class="login-form-body col-md-5  mt-md-5 mb-3">
+                                                <div class="form-gp">
+                                                    <label for="number">사원번호</label>
+                                                    <input type="text" id="number" name="number" maxlength="8"
+                                                           onkeypress="onlyNumber();"
+                                                           style="width: 30%">
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                                <div class="form-gp">
+                                                    <label for="name">성명</label>
+                                                    <input type="text" id="name" name="name" style="width: 30%">
+                                                    <div class="text-danger"></div>
+                                                </div>
+
+                                                <div class="form-gp">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" name="email" id="email" style="width: 45%">
+                                                    <div class="text-danger"></div>
+                                                </div>
+
+                                                <div style="display: inline">
+                                                    <div class="form-gp">
+                                                        <label for="jumin">주민등록번호</label>
+                                                        <input type="text" id="jumin" name="jumin"
+                                                               onkeyup="setjumin(this)"
+                                                               size="10"
+                                                               maxlength="14" style="width: 45%"
+                                                               onkeypress="onlyNumber()">
+                                                    </div>
+                                                </div>
+                                                <div style="display: inline">
+                                                    <label class="form-gp">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="sex" class="custom-control-input"
+                                                               name="sex"
+                                                               value="남">
+                                                        <label class="custom-control-label" for="sex">남</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="sex1" class="custom-control-input"
+                                                               name="sex"
+                                                               value="여">
+                                                        <label class="custom-control-label" for="sex1">여</label>
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                                <br>
+                                                <div class="form-gp">
+                                                    <input type="hidden" id="address" name="address_all" value="">
+                                                    <label for="address1">주소</label>
+                                                    <div style="display: inline">
+                                                        <input type="text" id="address1" name="address"
+                                                               style="bottom: 30px; width: 100%">
+                                                    </div>
+                                                    <input type="text" id="address2" name="address"
+                                                           style="bottom: 30px; width: 60%" value="">
+                                                </div>
+                                            </div>
+                                            <div class="login-form-body col-md-4 mt-md-5 mb-3">
+                                                <div class="form-gp" style="display: inline">
+                                                    <label for="department">부서</label>
+                                                    <select id="department" name="department" value="hid"
+                                                            class="btn btn-flat btn-light dropdown-toggle"
+                                                            style="width:120px;">
+                                                        <option value="hid" hidden="hidden"></option>
+                                                        <option value="개발">개발</option>
+                                                        <option value="기획">기획</option>
+                                                        <option value="영업">영업</option>
+                                                    </select>
+                                                </div>
+                                                <br><br>
+                                                <div class="form-gp" style="display: inline">
+                                                    <label for="position">직책</label>
+                                                    <select id="position" name="position" value="hidpo"
+                                                            class="btn btn-flat btn-light dropdown-toggle"
+                                                            style="width:120px;">
+                                                        <option value="hidpo" hidden="hidden"></option>
+                                                        <option value="부장">부장</option>
+                                                        <option value="차장">차장</option>
+                                                        <option value="과장">과장</option>
+                                                        <option value="대리">대리</option>
+                                                        <option value="주임">주임</option>
+                                                        <option value="사원">사원</option>
+                                                    </select>
+                                                </div>
+                                                <br><br>
+                                                <div class="form-gp" style="display: inline">
+                                                    <label for="status">상태</label>
+                                                    <select id="status" name="status" value="hidst"
+                                                            class="btn btn-flat btn-light dropdown-toggle"
+                                                            style="width:120px;">
+                                                        <option value="hidst" hidden="hidden"></option>
+                                                        <option value="재직">재직</option>
+                                                        <option value="휴직">휴직</option>
+                                                        <option value="퇴직">퇴직</option>
+                                                    </select>
+                                                </div>
+                                                <div><br>
+                                                    <label for="hire"
+                                                           class="col-form-label">입사일자</label>
+                                                    <input class="form-control" type="date" name="hire" id="hire"
+                                                           style="width: 80%">
+                                                </div>
+                                                <div style="bottom: 20px">
+                                                    <label for="resign" class="col-form-label">퇴사일자</label>
+                                                    <input class="form-control" type="date" name="resign" id="resign"
+                                                           style="width: 80%">
+                                                </div>
+                                                <div class="form-gp">
+                                                    <input type="text" name="bodyheat" id="bodyheat" style="width: 32%"
+                                                           hidden="hidden">
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                                <br><br><br><br><br>
+                                                <div style="text-align:right!important"
+                                                     class="col-lg-6 submit-btn-area">
+                                                    <button id="form_submit" class="btn btn-flat btn-outline-dark mb-3"
+                                                            type="submit">저 장<i class="ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="able2" role="tabpanel" aria-labelledby="able2-tab">
+                                    <div class="single-table">
+                                        <div style="text-align: right!important;">
+                                        <button onclick="add_row()" class="btn btn-flat btn-outline-dark mb-3">행 추가</button>
+                                        <button onclick="delete_row()" class="btn btn-flat btn-outline-dark mb-3">행 삭제</button>
+                                        </div>
+                                        <table class="data-tables row-border order-column text-center">
+                                            <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>자격증명</th>
+                                                <th>발급기관</th>
+                                                <th>취득일자</th>
+                                                <th>유효일자</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="my-tbody">
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>정보처리기사1급</td>
+                                                <td>한국사업인력관리공단</td>
+                                                <td>2020-12-30</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>리눅스마스터2급</td>
+                                                <td>한국사업인력관리공단</td>
+                                                <td>2020-12-9</td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody>
+
+                                        </table>
+                                        <br><br><br>
+
+                                        <!--<button class="btn btn-flat btn-outline-dark mb-3" onclick="doExcelDownloadProcess()">Excel 다운로드</button>-->
+                                    </div>
+                                    <div style="float: right;">
+                                        <div class="col-lg-6 submit-btn-area" >
+                                            <button class="btn btn-flat btn-outline-dark mb-3"
+                                                    type="submit" style="float: right;">저 장<i class="ti-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <!-- nav and search button -->
-                <div class="col-lg-3 clearfix">
-                    <div class="search-box">
-                        <form action="#">
-                            <input type="text" name="search" placeholder="Search..." required>
-                            <i class="ti-search"></i>
-                        </form>
-                    </div>
-                </div>
-                <!-- mobile_menu -->
-                <div class="col-12 d-block d-lg-none">
-                    <div id="mobile_menu"></div>
-                </div>
+                <!-- market value area end -->
             </div>
         </div>
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <!-- footer area end-->
     </div>
-    <!-- header area end -->
-    <!-- page title area end -->
-    <div class="single-table">
-        <table id="member-table" name="member-table" class="data-tables row-border order-column text-center">
-            <thead>
-            <tr>
-                <th>사원번호</th>
-                <th>이름</th>
-                <th>직책</th>
-                <th>부서</th>
-                <th>입사일자</th>
-                <th>이메일</th>
-                <th>주소</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.number}"></td>
-                <td th:text="${member.name}"></td>
-                <td th:text="${member.position}"></td>
-                <td th:text="${member.department}"></td>
-                <td th:text="${member.hire}"></td>
-                <td th:text="${member.email}"></td>
-                <td th:text="${member.address}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- page container area end -->
+    <!-- offset area start -->
 </div>
+    <script>
+
+        //파일업로드
+        var formData = new FormData($("#formId")[0]);
+        $.ajax({
+            type: 'post',
+            url: "/excelupload",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (html) {
+                alert("파일 업로드를 성공하였습니다.");
+            },
+            error: function (error) {
+                alert("파일 업로드에 실패하였습니다.");
+                console.log(error);
+                console.log(error.status);
+            }
+        });
+
+        function setjumin(obj) {
+            ju = obj.value;
+            ju = ju.replace("-", "");
+            if (ju.length > 6) {
+                ju1 = ju.substring(0, 6);
+                ju2 = ju.substring(6, 7);
+                for (i = 1; i < ju.substring(6).length && i < 7; i++) {
+                    ju2 = ju2 + "*";
+                }
+                obj.value = ju1 + "-" + ju2;
+            }
+        }
+
+        //숫자만 입력
+        function onlyNumber() {
+            if ((event.keyCode < 48) || (event.keyCode > 57))
+                event.returnValue = false;
+        }
+        function add_row() {
+            var my_tbody = document.getElementById('my-tbody');
+            // var row = my_tbody.insertRow(0); // 상단에 추가
+            var row = my_tbody.insertRow( my_tbody.rows.length ); // 하단에 추가
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+        }
+
+        function delete_row() {
+            var my_tbody = document.getElementById('my-tbody');
+            if (my_tbody.rows.length < 1) return;
+            // my_tbody.deleteRow(0); // 상단부터 삭제
+            my_tbody.deleteRow( my_tbody.rows.length-1 ); // 하단부터 삭제
+        }
+    </script>
+    <style>
+        select {
+            text-align-last: right;
+            padding-left: 10px;
+        }
+
+        option {
+            text-align-last: right;
+            padding-left: 30px;
+        }
+    </style>
+    <!-- offset area end -->
+    <!-- jquery latest version -->
+    <script src="/js/datepicker.js"></script>
+    <script src="/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/metisMenu.min.js"></script>
+    <script src="/js/jquery.slimscroll.min.js"></script>
+    <script src="/js/jquery.slicknav.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="/js/pie-chart.js"></script>
+    <!-- others plugins -->
+    <script src="/js/plugins.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c5e8a858eebc10782f551651f1e142d8"></script>
+
+    <!--datatables 옵션 -->
+    <script>
+        $.fn.DataTable.ext.pager.numbers_no_ellipses = function (page, pages) {
+            var numbers = [];
+            var buttons = $.fn.DataTable.ext.pager.numbers_length;
+            var half = Math.floor(buttons / 2);
+
+            var _range = function (len, start) {
+                var end;
+
+                if (typeof start === "undefined") {
+                    start = 0;
+                    end = len;
+                } else {
+                    end = start;
+                    start = len;
+                }
+                var out = [];
+                for (var i = start; i < end; i++) {
+                    out.push(i);
+                }
+
+                return out;
+            };
 
 
-<!-- main content area end -->
-<!-- footer area start-->
-<footer>
-    <div class="footer-area">
-        <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
-        </p>
-    </div>
-</footer>
-<!-- footer area end-->
-</div>
-<!-- main wrapper start -->
-<!-- offset area start -->
-<div class="offset-area">
-    <div class="offset-close"><i class="ti-close"></i></div>
-    <ul class="nav offset-menu-tab">
-        <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
-        <li><a data-toggle="tab" href="#settings">Settings</a></li>
-    </ul>
-    <div class="offset-content tab-content">
-        <div id="activity" class="tab-pane fade in show active">
-            <div class="recent-activity">
-                <div class="timeline-task">
-                    <div class="icon bg1">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-check"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Added</h4>
-                        <span class="time"><i class="ti-time"></i>7 Minutes Ago</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>You missed you Password!</h4>
-                        <span class="time"><i class="ti-time"></i>09:20 Am</span>
-                    </div>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="fa fa-bomb"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Member waiting for you Attention</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="ti-signal"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>You Added Kaji Patha few minutes ago</h4>
-                        <span class="time"><i class="ti-time"></i>01 minutes ago</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg1">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Ratul Hamba sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Hello sir , where are you, i am egerly waiting for you.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="fa fa-bomb"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="ti-signal"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="settings" class="tab-pane fade">
-            <div class="offset-settings">
-                <h4>General Settings</h4>
-                <div class="settings-list">
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Notifications</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch1"/>
-                                <label for="switch1">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Keep it 'On' When you want to get all the notification.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show recent activity</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch2"/>
-                                <label for="switch2">Toggle</label>
-                            </div>
-                        </div>
-                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show your emails</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch3"/>
-                                <label for="switch3">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Show email so that easily find you.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show Task statistics</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch4"/>
-                                <label for="switch4">Toggle</label>
-                            </div>
-                        </div>
-                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Notifications</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch5"/>
-                                <label for="switch5">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Use checkboxes when looking for yes or no answers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+            if (pages <= buttons) {
+                numbers = _range(0, pages);
 
-<!-- offset area end -->
-<!-- jquery latest version -->
-<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-<!-- bootstrap 4 js -->
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/metisMenu.min.js"></script>
-<script src="/js/jquery.slimscroll.min.js"></script>
-<script src="/js/jquery.slicknav.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+            } else if (page <= half) {
+                numbers = _range(0, buttons);
 
-<!-- start chart js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-<!-- start highcharts js -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<!-- start amcharts -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<!-- all line chart activation -->
-<script src="/js/line-chart.js"></script>
-<!-- all pie chart -->
-<script src="/js/pie-chart.js"></script>
-<!-- all bar chart -->
-<script src="/js/bar-chart.js"></script>
-<!-- all map chart -->
-<script src="/js/maps.js"></script>
-<!-- others plugins -->
-<script src="/js/plugins.js"></script>
-<script src="/js/scripts.js"></script>
-<script>
-    $.fn.DataTable.ext.pager.numbers_no_ellipses = function (page, pages) {
-        var numbers = [];
-        var buttons = $.fn.DataTable.ext.pager.numbers_length;
-        var half = Math.floor(buttons / 2);
+            } else if (page >= pages - 1 - half) {
+                numbers = _range(pages - buttons, pages);
 
-        var _range = function (len, start) {
-            var end;
-
-            if (typeof start === "undefined") {
-                start = 0;
-                end = len;
             } else {
-                end = start;
-                start = len;
-            }
-            var out = [];
-            for (var i = start; i < end; i++) {
-                out.push(i);
+                numbers = _range(page - half, page + half + 1);
             }
 
-            return out;
+            numbers.DT_el = 'span';
+            if (page == 0) {
+                return [numbers, "next", "last"];
+            } else if (page == 1) {
+                return ["previous", numbers, "next", "last"];
+            } else {
+                return ["first", "previous", numbers, "next", "last"];
+            }
+
         };
 
+        $(document).ready(function () {
+            $.fn.dataTable.ext.pager.numbers_length = 5;
 
-        if (pages <= buttons) {
-            numbers = _range(0, pages);
-
-        } else if (page <= half) {
-            numbers = _range(0, buttons);
-
-        } else if (page >= pages - 1 - half) {
-            numbers = _range(pages - buttons, pages);
-
-        } else {
-            numbers = _range(page - half, page + half + 1);
-        }
-
-        numbers.DT_el = 'span';
-        if (page == 0) {
-            return [numbers, "next", "last"];
-        } else if (page == 1) {
-            return ["previous", numbers, "next", "last"];
-        } else {
-            return ["first", "previous", numbers, "next", "last"];
-        }
-
-    };
-
-    $(document).ready(function () {
-        $.fn.dataTable.ext.pager.numbers_length = 5;
-
-        $("#member-table").DataTable({
-            "dom": '<"pull-left"f>i<"pull-right"l>tp',
-            // "bStateSave": true,
-            "lengthMenu": [10, 20, 30],
-            "filter": false,
-            "info": true,
-            "ordering": true,
-            "scrollX": true,
-            "scrollY": false,
-            "fixedHeader": false,
-            "scrollCollapse": true,
-            "autoWidth": false,
-            "pagingType": "numbers_no_ellipses",
-            "lengthChange": true,
-            "fixedColumns": {
-                "leftColumns": 6,
-                "heightMatch": "none"
-                // "terader-collapse" : "separate"
-            },
-            "language": {
-                "lengthMenu": "_MENU_",
-                "zeroRecords": "기간 내 데이터가 없습니다.",
-                "info": "total:_TOTAL_",
-                "infoEmpty": "total: 0",
-                "paginate": {
-                    "first": '<<',
-                    "last": '>>',
-                    "previous": "<",
-                    "next": ">"
+            $("#member-table").DataTable({
+                "dom": '<"pull-left"f>i<"pull-right"l>tp',
+                //"bStateSave": true,
+                "pageLength": 5,
+                "filter": false,
+                "info": false,
+                "searching": true,
+                "ordering": true,
+                "scrollX": false,
+                "scrollY": false,
+                "fixedHeader": false,
+                "scrollCollapse": true,
+                "autoWidth": false,
+                "paging": false,
+                "lengthChange": false,
+                "fixedColumns": {
+                    "leftColumns": 6,
+                    "heightMatch": "none"
+                    // "terader-collapse" : "separate"
+                },
+                "language": {
+                    "lengthMenu": "_MENU_",
+                    "zeroRecords": "데이터가 없습니다.",
+                    "info": "total:_TOTAL_",
+                    "infoEmpty": "total: 0",
+                    "paginate": {
+                        "first": false,
+                        "last": false,
+                        "previous": "<",
+                        "next": ">"
+                    }
                 }
+            })
+        });
+
+        //빈칸 정규
+        function white() {
+            var idw = document.getElementById("number").value;
+            if (idw == "") {
+                alert("사원번호를 입력해주세요");
+                document.getElementById('number').focus();
+                return false;
             }
-        })
-    });
-</script>
-<style>
-    table {
-        width: 100%;
-        margin: 0 auto;
-        clear: both;
-        border-collapse: collapse !important;
-        border-spacing: 0;
-    }
+            if (idw == "23423") {
+                alert("존재하는 사원번호입니다");
+                document.getElementById('number').focus();
+                return false;
+            }
+            if (idw == "99109") {
+                alert("존재하는 사원번호입니다");
+                document.getElementById('number').focus();
+                return false;
+            }
+            var pww = document.getElementById("pw").value;
+            if (pww == "") {
+                alert("비밀번호를 입력해주세요");
+                document.getElementById('pw').focus();
+                return false;
+            }
+            var pwwc = document.getElementById("jumin").value;
+            if (pwwc == "") {
+                alert("주민등록번호를 입력해주세요");
+                document.getElementById('jumin').focus();
+                return false;
+            }
+            var namew = document.getElementById("name").value;
+            if (namew == "") {
+                alert("이름을 입력해주세요");
+                document.getElementById('name').focus();
+                return false;
+            }
+            var emailw = document.getElementById("email").value;
+            if (emailw == "") {
+                alert("이메일을 입력해주세요");
+                document.getElementById('email').focus();
+                return false;
+            }
+            var phonew = document.getElementById("sex").value;
+            if (phonew == "") {
+                alert("성별을 선택해주세요");
+                document.getElementById('sex').focus();
+                return false;
+            }
 
-    table td {
-        height: 40px !important;
-    }
+            var birthwww = document.getElementById("department").value;
+            if (birthwww == "hid") {
+                alert("부서를 선택해주세요");
+                document.getElementById('department').focus();
+                return false;
+            }
+            var addressw = document.getElementById("position").value;
+            if (addressw == "hidpo") {
+                alert("직책를 선택해주세요");
+                document.getElementById('position').focus();
+                return false;
+            }
+            var addressw2 = document.getElementById("status").value;
+            if (addressw2 == "hidst") {
+                alert("직책를 선택해주세요");
+                document.getElementById('status').focus();
+                return false;
+            }
+            var hir = document.getElementById("hire").value;
+            if (hir == "") {
+                alert("입사일자를 입력해주세요");
+                document.getElementById('hire').focus();
+                return false;
+            }
+        }
 
-    div.dataTables_wrapper div.dataTables_length select {
-        width: 60px;
-    }
+        //row값 클릭 시 상세정보
+        window.onload = $("#example-table-1").click(function () {
 
-    div.dataTables_wrapper {
-        margin: 0 auto;
-    }
+            var str = ""
 
-    .dataTables_paginate {
-        float: left !important;
-        margin-left: 530px !important;
-    }
+            var tdArr = new Array();    // 배열 선언
 
-    table.dataTable thead .sorting,
-    table.dataTable thead .sorting_asc,
-    table.dataTable thead .sorting_desc {
-        background: none;
-    }
+            // 현재 클릭된 Row(<tr>)
+            var tr = $(this);
+            var td = tr.children();
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        padding: 0px;
-        margin-left: 0px;
-        border: 0px;
-    }
+            // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
+            console.log("클릭한 Row의 모든 데이터 : " + tr.text());
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        border: 0px;
-    }
+            // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+            td.each(function (i) {
+                tdArr.push(td.eq(i).text());
+            });
 
-    th {
-        white-space: nowrap;
-    }
-</style>
+            console.log("배열에 담긴 값 : " + tdArr);
+
+            // td.eq(index)를 통해 값을 가져올 수도 있다.
+            var no = td.eq(0).text();
+            var userid = td.eq(1).text();
+            var name = td.eq(2).text();
+            var email = td.eq(3).text();
+
+
+            str += " * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
+                ", 아이디 : <font color='red'>" + userid + "</font>" +
+                ", 이름 : <font color='red'>" + name + "</font>" +
+                ", 이메일 : <font color='red'>" + email + "</font>";
+
+            $("#ex1_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
+            $("#ex1_Result2").html(str);
+            $('#number').val(no);
+            $('#name').val(name);
+            $('#email').val(email);
+            $('#address').val(userid);
+        });
+
+
+        function regi() {
+            var x = document.getElementById("info");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                document.getElementById('number').focus();
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        //카카오주소
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                    var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                        extraRoadAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if (extraRoadAddr !== '') {
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    }
+                    // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                    if (fullRoadAddr !== '') {
+                        fullRoadAddr += extraRoadAddr;
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    //document.getElementById('zip').value = data.zonecode; //5자리 새우편번호 사용
+                    document.getElementById('address1').value = fullRoadAddr;
+                    document.getElementById('address2').focus();
+                }
+            }).open();
+        }
+
+        //주소
+        $('input[name=address]').map(function () {
+            address_all += $(this).val();
+        });
+        //업로드
+        const elImage = document.querySelector("#reviewImageFileOpenInput");
+        elImage.addEventListener("change", (evt) => {
+            const image = evt.target.files[0];
+            if (!validImageType(image)) {
+                console.warn("invalide image file type");
+                return;
+            }
+        });
+
+    </script>
+
+    <style>
+        table {
+            width: 100%;
+            margin: 0 auto;
+            clear: both;
+            border-collapse: collapse !important;
+            border-spacing: 0;
+        }
+
+        table td {
+            height: 40px !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 60px;
+        }
+
+        div.dataTables_wrapper {
+            margin: 0 auto;
+        }
+
+        .dataTables_paginate {
+            text-align: center !important;
+        }
+
+        table.dataTable thead .sorting,
+        table.dataTable thead .sorting_asc,
+        table.dataTable thead .sorting_desc {
+            background: none;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0px;
+            margin-left: 0px;
+            border: 0px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            border: 0px;
+        }
+
+        th {
+            white-space: nowrap;
+        }
+    </style>
+
 </body>
 
 </html>
-

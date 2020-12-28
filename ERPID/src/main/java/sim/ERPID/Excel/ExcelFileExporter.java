@@ -58,6 +58,9 @@ public class ExcelFileExporter {
             cell.setCellValue("주소");
             cell.setCellStyle(headerCellStyle);
 
+            cell =row.createCell(7);
+            cell.setCellValue("체온");
+            cell.setCellStyle(headerCellStyle);
 
             //create date row for eache of customer object
             for(int i =0; i<customers.size(); i++){
@@ -70,17 +73,19 @@ public class ExcelFileExporter {
                 dataRow.createCell(4).setCellValue(customers.get(i).getHire());
                 dataRow.createCell(5).setCellValue(customers.get(i).getEmail());
                 dataRow.createCell(6).setCellValue(customers.get(i).getAddress());
+                dataRow.createCell(7).setCellValue(customers.get(i).getBodyheat());
 
             }
 
             //Making sure the size of excel cell auto resize to fit the data
-            sheet.setColumnWidth(0, (sheet.getColumnWidth(0))+800);
-            sheet.setColumnWidth(1, (sheet.getColumnWidth(1))+1000);
-            sheet.setColumnWidth(2, (sheet.getColumnWidth(2))+1000);
-            sheet.setColumnWidth(3, (sheet.getColumnWidth(3))+1000);
-            sheet.setColumnWidth(4, (sheet.getColumnWidth(4))+2500);
-            sheet.setColumnWidth(5, (sheet.getColumnWidth(5))+4000);
-            sheet.setColumnWidth(6, (sheet.getColumnWidth(6))+10000);
+            sheet.setColumnWidth(0, (sheet.getColumnWidth(0))+600);
+            sheet.setColumnWidth(1, (sheet.getColumnWidth(1))+400);
+            sheet.setColumnWidth(2, (sheet.getColumnWidth(2))+300);
+            sheet.setColumnWidth(3, (sheet.getColumnWidth(3))+300);
+            sheet.setColumnWidth(4, (sheet.getColumnWidth(4))+1500);
+            sheet.setColumnWidth(5, (sheet.getColumnWidth(5))+2900);
+            sheet.setColumnWidth(6, (sheet.getColumnWidth(6))+7500);
+            sheet.setColumnWidth(7, (sheet.getColumnWidth(7))+300);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);

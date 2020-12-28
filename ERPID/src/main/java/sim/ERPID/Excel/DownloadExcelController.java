@@ -33,8 +33,8 @@ public class DownloadExcelController {
     }
     private List<Customer> createTestData() {
         List<Customer> customers = new ArrayList<Customer>();
-        customers.add(new Customer("23423","심성윤","차장","개발","2020-09-10","jghee717@hrms.com","서울 강남구 양재천로 167 (도곡동),1002"));
-        customers.add(new Customer("99109","신현준","부장","개발","2020-04-11","sinhj@hrms.com","서울 강남구 양재천로 167 (도곡동),2201"));
+        customers.add(new Customer("23423","심성윤","차장","개발","2020-09-10","jghee717@hrms.com","서울 강남구 양재천로 167 (도곡동),1002","36.7ºC"));
+        customers.add(new Customer("99109","신현준","부장","개발","2020-04-11","sinhj@hrms.com","서울 강남구 양재천로 167 (도곡동),2201","36.4ºC"));
         return customers;
     }
 
