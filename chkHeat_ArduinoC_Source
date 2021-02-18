@@ -1,0 +1,273 @@
+//----------------헤더파일 참조부분----------------
+#include <SPI.h>
+#include <MFRC522.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <stdint.h>
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+//와이파이
+#include <string.h>
+#include <SoftwareSerial.h>
+#include "ESP8266.h"
+
+//----------------핀설정----------------
+#define SS_PIN 10
+#define RST_PIN 9
+#define OLED_RESET 4
+#define sw 8
+#define DEBUG true
+
+MFRC522 rfid(SS_PIN, RST_PIN);
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+Adafruit_SSD1306 display(OLED_RESET);
+MFRC522::MIFARE_Key key;
+#if (SSD1306_LCDHEIGHT != 32)
+#error("SSD1306.h");
+#endif
+
+byte nuidPICC[4];
+
+//와이파이 연결정보
+#define SSID "U+NetB044"
+#define PASSWORD "E60D8#J117"
+#define SERVERIP ""
+SoftwareSerial mySerial(5,6);
+
+const unsigned char crc8_table[256]=          //CRC table (Please don't change this value)
+{
+    0x00, 0x07, 0x0E, 0x09, 0x1C, 0x1B, 0x12, 0x15,    0x38, 0x3F, 0x36, 0x31, 0x24, 0x23, 0x2A, 0x2D,
+    0x70, 0x77, 0x7E, 0x79, 0x6C, 0x6B, 0x62, 0x65,    0x48, 0x4F, 0x46, 0x41, 0x54, 0x53, 0x5A, 0x5D,
+    0xE0, 0xE7, 0xEE, 0xE9, 0xFC, 0xFB, 0xF2, 0xF5,    0xD8, 0xDF, 0xD6, 0xD1, 0xC4, 0xC3, 0xCA, 0xCD,
+    0x90, 0x97, 0x9E, 0x99, 0x8C, 0x8B, 0x82, 0x85,    0xA8, 0xAF, 0xA6, 0xA1, 0xB4, 0xB3, 0xBA, 0xBD,
+    0xC7, 0xC0, 0xC9, 0xCE, 0xDB, 0xDC, 0xD5, 0xD2,    0xFF, 0xF8, 0xF1, 0xF6, 0xE3, 0xE4, 0xED, 0xEA,
+    0xB7, 0xB0, 0xB9, 0xBE, 0xAB, 0xAC, 0xA5, 0xA2,    0x8F, 0x88, 0x81, 0x86, 0x93, 0x94, 0x9D, 0x9A,
+    0x27, 0x20, 0x29, 0x2E, 0x3B, 0x3C, 0x35, 0x32,    0x1F, 0x18, 0x11, 0x16, 0x03, 0x04, 0x0D, 0x0A,
+    0x57, 0x50, 0x59, 0x5E, 0x4B, 0x4C, 0x45, 0x42,    0x6F, 0x68, 0x61, 0x66, 0x73, 0x74, 0x7D, 0x7A,
+    0x89, 0x8E, 0x87, 0x80, 0x95, 0x92, 0x9B, 0x9C,    0xB1, 0xB6, 0xBF, 0xB8, 0xAD, 0xAA, 0xA3, 0xA4,
+    0xF9, 0xFE, 0xF7, 0xF0, 0xE5, 0xE2, 0xEB, 0xEC,    0xC1, 0xC6, 0xCF, 0xC8, 0xDD, 0xDA, 0xD3, 0xD4,
+    0x69, 0x6E, 0x67, 0x60, 0x75, 0x72, 0x7B, 0x7C,    0x51, 0x56, 0x5F, 0x58, 0x4D, 0x4A, 0x43, 0x44,
+    0x19, 0x1E, 0x17, 0x10, 0x05, 0x02, 0x0B, 0x0C,    0x21, 0x26, 0x2F, 0x28, 0x3D, 0x3A, 0x33, 0x34,
+    0x4E, 0x49, 0x40, 0x47, 0x52, 0x55, 0x5C, 0x5B,    0x76, 0x71, 0x78, 0x7F, 0x6A, 0x6D, 0x64, 0x63,
+    0x3E, 0x39, 0x30, 0x37, 0x22, 0x25, 0x2C, 0x2B,    0x06, 0x01, 0x08, 0x0F, 0x1A, 0x1D, 0x14, 0x13,
+    0xAE, 0xA9, 0xA0, 0xA7, 0xB2, 0xB5, 0xBC, 0xBB,    0x96, 0x91, 0x98, 0x9F, 0x8A, 0x8D, 0x84, 0x83,
+    0xDE, 0xD9, 0xD0, 0xD7, 0xC2, 0xC5, 0xCC, 0xCB,    0xE6, 0xE1, 0xE8, 0xEF, 0xFA, 0xFD, 0xF4, 0xF3
+};
+BUF[0] = _deviceAddress<<1;
+  BUF[1] = reg;
+  BUF[2] = (_deviceAddress<<1) | 0x01;
+  BUF[3] = Low_Byte;
+  BUF[4] = High_Byte;
+
+Write_Buf[0] = _deviceAddress<<1;         // Slave Address
+  Write_Buf[1] = reg;                  // EEPROM Address
+  Write_Buf[2] = data & 0xff;          // Low Byte
+  Write_Buf[3] = (data>>8) & 0xff;     // High Byte
+  Write_Buf[4] = CalPEC(Write_Buf,4);  // PEC
+
+
+//---------------- 셋업[초기설정부분]----------------
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  rfid.PCD_Init();
+
+  for (byte i = 0; i < 6; i++) {
+  key.keyByte[i] = 0xFF;
+
+  }
+
+  Serial.print(F("Using the following key:"));
+
+//----------------------------------------------
+  Serial.println("Adafruit MLX90614 test");
+  mlx.begin();
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+
+  mySerial.begin(9600);
+ Serial.println("ESP8266 wifi 연결");
+ boolean connected=false;
+ for(int i=0;i<10;i++)
+ {
+  if(connectWiFi())
+   {
+  connected = true;
+   break;
+  }
+   }
+  if (!connected){while(1);}
+
+}
+{
+  uint8_t Write_Buf[5];
+
+  Write_Buf[0] = _deviceAddress<<1;         // Slave Address
+  Write_Buf[1] = reg;                  // EEPROM Address
+  Write_Buf[2] = data & 0xff;          // Low Byte
+  Write_Buf[3] = (data>>8) & 0xff;     // High Byte
+  Write_Buf[4] = CalPEC(Write_Buf,4);  // PEC
+
+  Wire.beginTransmission(_deviceAddress);
+  Wire.write(reg);
+  Wire.write(Write_Buf[2]);  // Low Byte
+  Wire.write(Write_Buf[3]);  // High Byte
+  Wire.write(Write_Buf[4]);  // PEC
+  return Wire.endTransmission(true);
+}
+
+//----------------루프 [센서 동작]----------------
+void loop() {
+
+  if ( ! rfid.PICC_IsNewCardPresent())
+    return;
+
+  if ( ! rfid.PICC_ReadCardSerial())
+    return;
+
+  Serial.print(F("PICC type: "));
+  MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
+  Serial.println(rfid.PICC_GetTypeName(piccType));
+
+  if (piccType != MFRC522::PICC_TYPE_MIFARE_MINI &&
+    piccType != MFRC522::PICC_TYPE_MIFARE_1K &&
+    piccType != MFRC522::PICC_TYPE_MIFARE_4K) {
+    Serial.println(F("Your tag is not of type MIFARE Classic."));
+    return;
+  }
+
+//rfid카드값
+  if (rfid.uid.uidByte[0] != nuidPICC[0] ||
+    rfid.uid.uidByte[1] != nuidPICC[1] ||
+    rfid.uid.uidByte[2] != nuidPICC[2] ||
+    rfid.uid.uidByte[3] != nuidPICC[3] ) {
+    Serial.println(F("사원 식별"));
+
+    for (byte i = 0; i < 4; i++) {
+      nuidPICC[i] = rfid.uid.uidByte[i];
+    }
+    Serial.print(F("사원번호 : "));
+    String id = printDec(rfid.uid.uidByte, 3);
+    Serial.println();
+  }
+  else Serial.println(F("Card read previously."));
+
+  rfid.PICC_HaltA();
+
+  rfid.PCD_StopCrypto1(); //rfid 식별 후 멈춤
+
+
+  while(1){
+  float mlxx=("%.1f\n",mlx.readObjectTempC());
+  Serial.print("체온 : "); Serial.print(mlx.readObjectTempC(),1);
+  Serial.println("*C");     //체온 측정
+
+  Serial.println();
+  display.clearDisplay();
+
+  // text display tests
+  display.setTextSize(5);   //display 글자 크기
+  display.setTextColor(WHITE);
+  display.setCursor(0,0);   //display 글자 위치(xy좌표)
+  display.print(mlx.readObjectTempC(),1); //display에 온도 출력
+  display.println(" C");
+  display.display();
+
+  //와이파이로 서버 연결 후 데이터 전송
+  String cmd = "AT+CIPSTART=\"TCP\",\"";
+     cmd += SERVERIP;   //서버 ip정보
+     cmd += "\",80";  //port번호
+     Serial.println(cmd);
+     mySerial.println(cmd);
+     if(mySerial.find("Error"))
+    {
+      Serial.println( "TCP connect error" );
+      return;
+    }
+    String id = printDec(rfid.uid.uidByte, 3);
+    String Temp(mlx.readObjectTempC(),1);  //체온 데이터
+     cmd = "GET /sensor.php?TempR="+Temp+"&rfid="+id+"\r\n\r\n";
+     mySerial.print("AT+CIPSEND=");    //내 php파일에
+     mySerial.println(cmd.length());   //tempR 변수로전송
+
+     Serial.println(cmd);
+
+     if(mySerial.find(">"))
+     {
+       Serial.println("데이터 전송 중");
+       }else
+       {
+         mySerial.println("AT+CIPCLOSE");
+         Serial.println("connect timeout");
+         delay(1000);
+         return;
+       }
+
+       mySerial.print(cmd);
+       delay(2000);
+       //Serial.find("+IPD");
+       while (Serial.available())
+       {
+         char c = Serial.read();
+         mySerial.write(c);
+         if(c=='\r') mySerial.print('\n');
+       }
+       Serial.println("데이터 전송완료");
+       delay(1000);
+  break;
+
+  }
+}
+boolean connectWiFi()
+{
+   //mySerial.println("AT+CWMODE=1");
+String cmd="AT+CWJAP=\"";
+cmd+=SSID;
+cmd+="\",\"";
+cmd+=PASSWORD;
+cmd+="\"";
+mySerial.println(cmd);
+Serial.println(cmd);
+delay(3000);
+   if(mySerial.find("OK"))
+   {
+     Serial.println("Wifi 연결 완료.");
+     return true;
+   }
+   else
+   {
+     Serial.println("Wifi 연결 중");
+     return false;
+   }
+ }
+
+
+
+//----------------rfid----------------
+
+
+/**
+ * Helper routine to dump a byte array as dec values to Serial.
+ */
+String printDec(byte *buffer, int bufferSize) {
+  String ID = "";
+  for (byte i = 0; i < bufferSize-1; i++) {
+    Serial.print(buffer[i] < 0x10 ? "0" : "");
+    Serial.print(buffer[i], DEC);
+    String a(buffer[i]);
+    ID += buffer[i];
+  }
+  return (ID);
+}
+uint8_t CalPEC(uint8_t *crc, uint8_t nBytes)
+{
+  uint8_t data, count;
+  uint16_t remainder = 0;
+
+  for(count=0; count<nBytes; ++count)
+  {
+     data = *(crc++) ^ remainder;
+     remainder = crc8_table[data] ^ (remainder >> 8);
+  }
+  return remainder;
+}
